@@ -9,8 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Text("hello")
+                .padding()
+        }
+        .onAppear {
+            GoogleDriveService().files(completion: { a in
+                dump(a)
+            })
+        }
     }
 }
 
