@@ -38,6 +38,13 @@
 		7C753A11265B77E400711DE7 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A0F265B77DC00711DE7 /* TextField.swift */; };
 		7C753A13265B79A800711DE7 /* AnyTransition+go+back.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A12265B79A800711DE7 /* AnyTransition+go+back.swift */; };
 		7C753A14265B79B500711DE7 /* AnyTransition+go+back.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A12265B79A800711DE7 /* AnyTransition+go+back.swift */; };
+		7C753A17265B7FD600711DE7 /* MyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A16265B7FD500711DE7 /* MyAPIService.swift */; };
+		7C753A19265B809400711DE7 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A18265B809400711DE7 /* TokenResponse.swift */; };
+		7C753A1C265B81CD00711DE7 /* StatusReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A1B265B81CD00711DE7 /* StatusReponse.swift */; };
+		7C753A1E265B879000711DE7 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A1D265B879000711DE7 /* ErrorResponse.swift */; };
+		7C753A21265B8C6100711DE7 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A20265B8C6100711DE7 /* ActivityIndicator.swift */; };
+		7C753A23265B8C9000711DE7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A22265B8C9000711DE7 /* LoadingView.swift */; };
+		7C753A28265B929600711DE7 /* AlertingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A27265B929600711DE7 /* AlertingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +69,13 @@
 		7C753A0A265B6BE200711DE7 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 		7C753A0F265B77DC00711DE7 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		7C753A12265B79A800711DE7 /* AnyTransition+go+back.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransition+go+back.swift"; sourceTree = "<group>"; };
+		7C753A16265B7FD500711DE7 /* MyAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAPIService.swift; sourceTree = "<group>"; };
+		7C753A18265B809400711DE7 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
+		7C753A1B265B81CD00711DE7 /* StatusReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusReponse.swift; sourceTree = "<group>"; };
+		7C753A1D265B879000711DE7 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		7C753A20265B8C6100711DE7 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		7C753A22265B8C9000711DE7 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		7C753A27265B929600711DE7 /* AlertingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +113,7 @@
 				7C7539F8265B5B3100711DE7 /* Storage */,
 				7C7539D12659001300711DE7 /* Services */,
 				7C7539B02658FFB100711DE7 /* shared_diskApp.swift */,
-				7C7539B12658FFB100711DE7 /* ContentView.swift */,
-				7C7539FD265B621800711DE7 /* AuthScreens */,
+				7C753A24265B921D00711DE7 /* Views */,
 				7C7539B22658FFB200711DE7 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -138,6 +151,7 @@
 			children = (
 				7C7539DA265907AD00711DE7 /* Extensions */,
 				7C7539D72659013000711DE7 /* Shared */,
+				7C753A15265B7FBD00711DE7 /* MyApi */,
 				7C7539D22659002300711DE7 /* GoogleDrive */,
 			);
 			path = Services;
@@ -155,9 +169,9 @@
 		7C7539D72659013000711DE7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				7C753A1A265B81BF00711DE7 /* Responses */,
 				7C7539DF26590C0500711DE7 /* API */,
 				7C7539D82659015200711DE7 /* FileItem.swift */,
-				7C7539E226591AFA00711DE7 /* FilesResponse.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -211,6 +225,53 @@
 				7C753A0F265B77DC00711DE7 /* TextField.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7C753A15265B7FBD00711DE7 /* MyApi */ = {
+			isa = PBXGroup;
+			children = (
+				7C753A16265B7FD500711DE7 /* MyAPIService.swift */,
+			);
+			path = MyApi;
+			sourceTree = "<group>";
+		};
+		7C753A1A265B81BF00711DE7 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				7C7539E226591AFA00711DE7 /* FilesResponse.swift */,
+				7C753A18265B809400711DE7 /* TokenResponse.swift */,
+				7C753A1B265B81CD00711DE7 /* StatusReponse.swift */,
+				7C753A1D265B879000711DE7 /* ErrorResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		7C753A1F265B8C4900711DE7 /* ActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				7C753A20265B8C6100711DE7 /* ActivityIndicator.swift */,
+				7C753A22265B8C9000711DE7 /* LoadingView.swift */,
+			);
+			path = ActivityIndicator;
+			sourceTree = "<group>";
+		};
+		7C753A24265B921D00711DE7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7C753A25265B923800711DE7 /* Helper */,
+				7C7539B12658FFB100711DE7 /* ContentView.swift */,
+				7C7539FD265B621800711DE7 /* AuthScreens */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7C753A25265B923800711DE7 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7C753A27265B929600711DE7 /* AlertingView.swift */,
+				7C753A1F265B8C4900711DE7 /* ActivityIndicator */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,7 +371,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C753A17265B7FD600711DE7 /* MyAPIService.swift in Sources */,
 				7C753A13265B79A800711DE7 /* AnyTransition+go+back.swift in Sources */,
+				7C753A21265B8C6100711DE7 /* ActivityIndicator.swift in Sources */,
 				7C7539C52658FFB200711DE7 /* ContentView.swift in Sources */,
 				7C7539D92659015200711DE7 /* FileItem.swift in Sources */,
 				7C7539E326591AFA00711DE7 /* FilesResponse.swift in Sources */,
@@ -321,8 +384,13 @@
 				7C7539D42659005500711DE7 /* MimeType.swift in Sources */,
 				7C753A0B265B6BE200711DE7 /* AuthRouter.swift in Sources */,
 				7C7539E126590C6900711DE7 /* BaseAPIService.swift in Sources */,
+				7C753A23265B8C9000711DE7 /* LoadingView.swift in Sources */,
 				7C7539D6265900B100711DE7 /* GoogleDriveService.swift in Sources */,
 				7C7539FC265B5CA500711DE7 /* AuthView.swift in Sources */,
+				7C753A19265B809400711DE7 /* TokenResponse.swift in Sources */,
+				7C753A28265B929600711DE7 /* AlertingView.swift in Sources */,
+				7C753A1E265B879000711DE7 /* ErrorResponse.swift in Sources */,
+				7C753A1C265B81CD00711DE7 /* StatusReponse.swift in Sources */,
 				7C7539DE26590B9A00711DE7 /* BaseAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

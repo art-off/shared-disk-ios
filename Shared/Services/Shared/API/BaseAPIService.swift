@@ -29,15 +29,16 @@ class BaseAPIService {
     func load<T: Decodable>(_ type: T.Type,
                             method: BaseAPI.HTTPMethod,
                             path: String,
-                            token: String?,
+                            token: String? = nil,
                             queryParams: [String: String]? = nil,
+                            json: [String: Any]? = nil,
                             completion: @escaping (T?) -> Void) {
         
         let request: URLRequest
         if let token = token {
-            request = baseApi.requestWithBearerToken(.get, token: token, path: path, queryParams: queryParams)
+            request = baseApi.requestWithBearerToken(method, token: token, path: path, queryParams: queryParams, json: json)
         } else {
-            request = baseApi.request(method, path: path, queryParams: queryParams)
+            request = baseApi.request(method, path: path, queryParams: queryParams, json: json)
         }
 
         task = session.dataTask(with: request) { data, response, error in

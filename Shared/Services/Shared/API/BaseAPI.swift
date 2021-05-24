@@ -20,7 +20,7 @@ struct BaseAPI {
     func request(_ method: HTTPMethod,
                  path: String,
                  queryParams: [String: String]? = nil,
-                 andJsonData jsonData: Data? = nil) -> URLRequest {
+                 jsonData: Data? = nil) -> URLRequest {
         
         let pathWithSlash = (path.first == "/") ? path : "/" + path
         var url = URL(string: "\(stringAddress)\(pathWithSlash)")!
@@ -33,7 +33,24 @@ struct BaseAPI {
         
         var request = URLRequest(url: URL(string: "\(stringAddress)\(path)")!)
         request.httpMethod = method.rawValue
-        request.httpBody = jsonData
+        if let jsonData = jsonData {
+            request.httpBody = jsonData
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        }
+        
+        return request
+    }
+    
+    func request(_ method: HTTPMethod,
+                 path: String,
+                 queryParams: [String: String]? = nil,
+                 json: [String: Any]? = nil) -> URLRequest {
+        
+        var jsonData: Data?
+        if let json = json {
+            jsonData = try? JSONSerialization.data(withJSONObject: json, options: [])
+        }
+        let request = self.request(method, path: path, queryParams: queryParams, jsonData: jsonData)
         
         return request
     }
@@ -42,9 +59,21 @@ struct BaseAPI {
                                 token: String,
                                 path: String,
                                 queryParams: [String: String]? = nil,
-                                andJsonData jsonData: Data? = nil) -> URLRequest {
+                                jsonData: Data? = nil) -> URLRequest {
         
-        var request = self.request(method, path: path, queryParams: queryParams, andJsonData: jsonData)
+        var request = self.request(method, path: path, queryParams: queryParams, jsonData: jsonData)
+        
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        return request
+    }
+    
+    func requestWithBearerToken(_ method: HTTPMethod,
+                                token: String,
+                                path: String,
+                                queryParams: [String: String]? = nil,
+                                json: [String: Any]? = nil) -> URLRequest {
+        
+        var request = self.request(method, path: path, queryParams: queryParams, json: json)
         
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
