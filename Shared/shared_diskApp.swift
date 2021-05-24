@@ -11,7 +11,11 @@ import SwiftUI
 struct shared_diskApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if UserStorage.myToken == "" {
+                AuthRouter()
+            } else {
+                ContentView()
+            }
         }
     }
 }

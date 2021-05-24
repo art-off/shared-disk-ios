@@ -20,6 +20,24 @@
 		7C7539DE26590B9A00711DE7 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539DD26590B9A00711DE7 /* BaseAPI.swift */; };
 		7C7539E126590C6900711DE7 /* BaseAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539E026590C6900711DE7 /* BaseAPIService.swift */; };
 		7C7539E326591AFA00711DE7 /* FilesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539E226591AFA00711DE7 /* FilesResponse.swift */; };
+		7C7539FA265B5B4000711DE7 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539F9265B5B4000711DE7 /* UserStorage.swift */; };
+		7C7539FC265B5CA500711DE7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539FB265B5CA500711DE7 /* AuthView.swift */; };
+		7C7539FF265B622D00711DE7 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539FE265B622D00711DE7 /* RegistrationView.swift */; };
+		7C753A00265B63E800711DE7 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539F9265B5B4000711DE7 /* UserStorage.swift */; };
+		7C753A01265B63EE00711DE7 /* URL+appendQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539DB265907BF00711DE7 /* URL+appendQueryItem.swift */; };
+		7C753A02265B63F200711DE7 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539DD26590B9A00711DE7 /* BaseAPI.swift */; };
+		7C753A03265B63F400711DE7 /* BaseAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539E026590C6900711DE7 /* BaseAPIService.swift */; };
+		7C753A04265B63F700711DE7 /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539D82659015200711DE7 /* FileItem.swift */; };
+		7C753A05265B63F900711DE7 /* FilesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539E226591AFA00711DE7 /* FilesResponse.swift */; };
+		7C753A06265B63FC00711DE7 /* MimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539D32659005500711DE7 /* MimeType.swift */; };
+		7C753A07265B63FE00711DE7 /* GoogleDriveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539D5265900B100711DE7 /* GoogleDriveService.swift */; };
+		7C753A08265B640C00711DE7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539FB265B5CA500711DE7 /* AuthView.swift */; };
+		7C753A09265B640F00711DE7 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539FE265B622D00711DE7 /* RegistrationView.swift */; };
+		7C753A0B265B6BE200711DE7 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A0A265B6BE200711DE7 /* AuthRouter.swift */; };
+		7C753A0D265B738900711DE7 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A0A265B6BE200711DE7 /* AuthRouter.swift */; };
+		7C753A11265B77E400711DE7 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A0F265B77DC00711DE7 /* TextField.swift */; };
+		7C753A13265B79A800711DE7 /* AnyTransition+go+back.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A12265B79A800711DE7 /* AnyTransition+go+back.swift */; };
+		7C753A14265B79B500711DE7 /* AnyTransition+go+back.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A12265B79A800711DE7 /* AnyTransition+go+back.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +56,12 @@
 		7C7539DD26590B9A00711DE7 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		7C7539E026590C6900711DE7 /* BaseAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPIService.swift; sourceTree = "<group>"; };
 		7C7539E226591AFA00711DE7 /* FilesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesResponse.swift; sourceTree = "<group>"; };
+		7C7539F9265B5B4000711DE7 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
+		7C7539FB265B5CA500711DE7 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		7C7539FE265B622D00711DE7 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		7C753A0A265B6BE200711DE7 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		7C753A0F265B77DC00711DE7 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		7C753A12265B79A800711DE7 /* AnyTransition+go+back.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransition+go+back.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,9 +95,12 @@
 		7C7539AF2658FFB100711DE7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				7C753A0C265B728300711DE7 /* Transition */,
+				7C7539F8265B5B3100711DE7 /* Storage */,
 				7C7539D12659001300711DE7 /* Services */,
 				7C7539B02658FFB100711DE7 /* shared_diskApp.swift */,
 				7C7539B12658FFB100711DE7 /* ContentView.swift */,
+				7C7539FD265B621800711DE7 /* AuthScreens */,
 				7C7539B22658FFB200711DE7 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -99,6 +126,7 @@
 		7C7539C02658FFB200711DE7 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				7C753A0E265B77CF00711DE7 /* Extensions */,
 				7C7539C12658FFB200711DE7 /* Info.plist */,
 				7C7539C22658FFB200711DE7 /* macOS.entitlements */,
 			);
@@ -149,6 +177,40 @@
 				7C7539E026590C6900711DE7 /* BaseAPIService.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		7C7539F8265B5B3100711DE7 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				7C7539F9265B5B4000711DE7 /* UserStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		7C7539FD265B621800711DE7 /* AuthScreens */ = {
+			isa = PBXGroup;
+			children = (
+				7C753A0A265B6BE200711DE7 /* AuthRouter.swift */,
+				7C7539FB265B5CA500711DE7 /* AuthView.swift */,
+				7C7539FE265B622D00711DE7 /* RegistrationView.swift */,
+			);
+			path = AuthScreens;
+			sourceTree = "<group>";
+		};
+		7C753A0C265B728300711DE7 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				7C753A12265B79A800711DE7 /* AnyTransition+go+back.swift */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
+		7C753A0E265B77CF00711DE7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7C753A0F265B77DC00711DE7 /* TextField.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,14 +310,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C753A13265B79A800711DE7 /* AnyTransition+go+back.swift in Sources */,
 				7C7539C52658FFB200711DE7 /* ContentView.swift in Sources */,
 				7C7539D92659015200711DE7 /* FileItem.swift in Sources */,
 				7C7539E326591AFA00711DE7 /* FilesResponse.swift in Sources */,
+				7C7539FF265B622D00711DE7 /* RegistrationView.swift in Sources */,
 				7C7539C32658FFB200711DE7 /* shared_diskApp.swift in Sources */,
+				7C7539FA265B5B4000711DE7 /* UserStorage.swift in Sources */,
 				7C7539DC265907BF00711DE7 /* URL+appendQueryItem.swift in Sources */,
 				7C7539D42659005500711DE7 /* MimeType.swift in Sources */,
+				7C753A0B265B6BE200711DE7 /* AuthRouter.swift in Sources */,
 				7C7539E126590C6900711DE7 /* BaseAPIService.swift in Sources */,
 				7C7539D6265900B100711DE7 /* GoogleDriveService.swift in Sources */,
+				7C7539FC265B5CA500711DE7 /* AuthView.swift in Sources */,
 				7C7539DE26590B9A00711DE7 /* BaseAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,8 +331,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C753A05265B63F900711DE7 /* FilesResponse.swift in Sources */,
 				7C7539C62658FFB200711DE7 /* ContentView.swift in Sources */,
 				7C7539C42658FFB200711DE7 /* shared_diskApp.swift in Sources */,
+				7C753A11265B77E400711DE7 /* TextField.swift in Sources */,
+				7C753A09265B640F00711DE7 /* RegistrationView.swift in Sources */,
+				7C753A04265B63F700711DE7 /* FileItem.swift in Sources */,
+				7C753A00265B63E800711DE7 /* UserStorage.swift in Sources */,
+				7C753A06265B63FC00711DE7 /* MimeType.swift in Sources */,
+				7C753A01265B63EE00711DE7 /* URL+appendQueryItem.swift in Sources */,
+				7C753A0D265B738900711DE7 /* AuthRouter.swift in Sources */,
+				7C753A02265B63F200711DE7 /* BaseAPI.swift in Sources */,
+				7C753A03265B63F400711DE7 /* BaseAPIService.swift in Sources */,
+				7C753A14265B79B500711DE7 /* AnyTransition+go+back.swift in Sources */,
+				7C753A08265B640C00711DE7 /* AuthView.swift in Sources */,
+				7C753A07265B63FE00711DE7 /* GoogleDriveService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

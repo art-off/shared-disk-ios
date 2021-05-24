@@ -8,15 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var files: [FileItem] = [
+        FileItem(id: "sdlfkj", name: "ff", mineType: .csv1),
+        FileItem(id: "sdlasdffkj", name: "ffffsdfasdfasdfsa", mineType: .csv1),
+        FileItem(id: "sdsdddlfkj", name: "ff", mineType: .csv1),
+        FileItem(id: "sdlvxcvfkj", name: "ff", mineType: .csv1),
+        FileItem(id: "sdwwwlfkj", name: "ff", mineType: .csv1),
+    ]
+    
     var body: some View {
-        VStack {
-            Text("hello")
-                .padding()
-        }
-        .onAppear {
-            GoogleDriveService().files(completion: { a in
-                dump(a)
-            })
+        ScrollView {
+            LazyVGrid(
+                columns: [GridItem(.adaptive(minimum: 90))],
+                alignment: .center,
+                spacing: 16
+            ) {
+                ForEach(files) { file in
+                    VStack {
+                        Rectangle()
+                            .foregroundColor(.red)
+                            .aspectRatio(contentMode: .fit)
+                        Text(file.name)
+                            .lineLimit(2)
+                        Spacer()
+                    }
+                }
+            }
+            .padding()
         }
     }
 }

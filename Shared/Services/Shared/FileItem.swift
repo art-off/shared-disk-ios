@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FileItem {
+struct FileItem: Identifiable {
     
     let id: String
     let name: String
