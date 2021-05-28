@@ -61,17 +61,12 @@ struct RegistrationView: View {
                         MyAPIServic().registration(
                             login: login,
                             password: password,
-                            completion: { fine in
+                            completion: { text in
                                 DispatchQueue.main.async {
                                     self.login = ""
                                     self.password = ""
                                     self.isLoading = false
-                                    
-                                    if fine {
-                                        self.alertText = "User Created"
-                                    } else {
-                                        self.alertText = "Fail"
-                                    }
+                                    self.alertText = text
                                     self.isAlerting = true
                                 }
                             }

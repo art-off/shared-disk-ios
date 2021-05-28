@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AuthRouter: View {
     
+    @Binding var topRouterScreen: FirstRouter.Screen
     @State var currScreen: Screen = .auth
     
     enum Screen {
@@ -20,30 +21,24 @@ struct AuthRouter: View {
         ScrollView {
             switch currScreen {
             case .auth:
-                #if os(macOS)
-                AnyView(AuthView(routedCurrScreen: $currScreen))
-                    .frame(width: 800, height: 400)
+                AnyView(AuthView(goToGeneral: goToGeneral, routedCurrScreen: $currScreen))
                     .transition(.back)
-                #else
-                AnyView(AuthView(routedCurrScreen: $currScreen))
-                    .transition(.back)
-                #endif
             case .registration:
-                #if os(macOS)
-                AnyView(RegistrationView(routedCurrScreen: $currScreen))
-                    .frame(width: 800, height: 400)
-                    .transition(.go)
-                #else
                 AnyView(RegistrationView(routedCurrScreen: $currScreen))
                     .transition(.go)
-                #endif
             }
+        }
+    }
+    
+    func goToGeneral() {
+        withAnimation {
+            topRouterScreen = .generalScreen
         }
     }
 }
 
 struct AuthRouter_Previews: PreviewProvider {
     static var previews: some View {
-        AuthRouter()
+        AuthRouter(topRouterScreen: .constant(.authScreen))
     }
 }

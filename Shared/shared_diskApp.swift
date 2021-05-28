@@ -11,11 +11,10 @@ import SwiftUI
 struct shared_diskApp: App {
     var body: some Scene {
         WindowGroup {
-            if UserStorage.myToken == "" {
-                AuthRouter()
-            } else {
-                ContentView()
-            }
+            FirstRouter(currScreen: UserStorage.myToken == "" ? .authScreen : .generalScreen)
+                .if(.macOS) { view in
+                    view.frame(width: 800, height: 700)
+                }
         }
     }
 }

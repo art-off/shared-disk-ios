@@ -11,7 +11,7 @@ class MyAPIServic {
     
     private let serverService = BaseAPIService(stringAddress: "http://193.187.174.20")
     
-    func registration(login: String, password: String, completion: @escaping (Bool) -> Void) {
+    func registration(login: String, password: String, completion: @escaping (String) -> Void) {
         serverService.load(
             StatusResponse.self,
             method: .post,
@@ -21,8 +21,33 @@ class MyAPIServic {
                 "password": password,
             ],
             completion: { status in
-                print(status)
-                completion(status != nil)
+                switch status {
+                case .failure(let error):
+                    completion(error.description)
+                case .success(let response):
+                    completion(response.status)
+                }
+            }
+        )
+    }
+    
+    func auth(login: String, password: String, completion: @escaping (Bool) -> Void) {
+        serverService.load(
+            TokenResponse.self,
+            method: .post,
+            path: "/auth",
+            json: [
+                "name": login,
+                "password": password,
+            ],
+            completion: { tokenResult in
+                switch tokenResult {
+                case .failure(_):
+                    completion(false)
+                case .success(let tokenResponse):
+                    UserStorage.myToken = tokenResponse.token
+                    completion(true)
+                }
             }
         )
     }

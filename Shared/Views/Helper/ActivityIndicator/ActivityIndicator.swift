@@ -7,16 +7,31 @@
 
 import SwiftUI
 
-struct ActivityIndicator: UIViewRepresentable {
-
-    @Binding var isAnimating: Bool
-    let style: UIActivityIndicatorView.Style
-
-    func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {
-        return UIActivityIndicatorView(style: style)
+struct ActivityIndicator: View {
+    
+    @State var text = ""
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    var body: some View {
+        Text("Loading \(text)")
+            .font(.system(size: 17)).bold()
+            .transition(.slide)
+            .onReceive(timer, perform: { _ in
+                if self.text.count == 3 {
+                    self.text = ""
+                } else {
+                    self.text += "."
+                }
+            })
+            .onAppear {
+                self.text = "."
+            }
     }
+}
 
-    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {
-        isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
+struct ActivityIndicator_Previews: PreviewProvider {
+    static var previews: some View {
+        ActivityIndicator()
     }
 }

@@ -32,7 +32,7 @@ class BaseAPIService {
                             token: String? = nil,
                             queryParams: [String: String]? = nil,
                             json: [String: Any]? = nil,
-                            completion: @escaping (T?) -> Void) {
+                            completion: @escaping (Result<T, AppError>) -> Void) {
         
         let request: URLRequest
         if let token = token {
@@ -56,16 +56,27 @@ class BaseAPIService {
     private func handleResponse<T: Decodable>(_ type: T.Type,
                                               _ data: Data?,
                                               _ response: URLResponse?,
-                                              _ error: Error?) -> T? {
-        guard let data = data else { return nil }
+                                              _ error: Error?) -> Result<T, AppError> {
+        guard let data = data else { return .failure(.network) }
         
+        if let object = try? JSONDecoder().decode(T.self, from: data) {
+            return .success(object)
+        }
+        if let error = try? JSONDecoder().decode(ErrorResponse.self, from: data) {
+            dump(error)
+            do {
+                _ = try JSONDecoder().decode(T.self, from: data)
+            } catch let jsonError {
+                print(jsonError)
+            }
+            return .failure(.init(stringError: error.error))
+        }
         do {
-            let object = try JSONDecoder().decode(T.self, from: data)
-            return object
+            _ = try JSONDecoder().decode(T.self, from: data)
         } catch let jsonError {
             print(jsonError)
-            return nil
         }
+        return .failure(.unowned)
     }
     
 }

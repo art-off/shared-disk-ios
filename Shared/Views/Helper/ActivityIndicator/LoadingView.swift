@@ -20,8 +20,7 @@ struct LoadingView<Content>: View where Content: View {
                 .blur(radius: self.isShowing ? 3 : 0)
             
             VStack {
-                Text("Loading...")
-                ActivityIndicator(isAnimating: .constant(true), style: .large)
+                ActivityIndicator()
             }
             .frame(width: 100, height: 100)
             .background(Color.secondary.colorInvert())
@@ -36,7 +35,7 @@ struct LoadingView<Content>: View where Content: View {
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
         LoadingView(isShowing: .constant(true)) {
-            EmptyView().frame(width: 100, height: 100)
+            EmptyView().frame(width: 200, height: 200)
         }
     }
 }

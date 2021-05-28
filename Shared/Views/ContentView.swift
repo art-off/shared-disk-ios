@@ -29,6 +29,9 @@ struct ContentView: View {
                         Rectangle()
                             .foregroundColor(.red)
                             .aspectRatio(contentMode: .fit)
+                            .onTapGesture {
+                                UserStorage.myToken = ""
+                            }
                         Text(file.name)
                             .lineLimit(2)
                         Spacer()
