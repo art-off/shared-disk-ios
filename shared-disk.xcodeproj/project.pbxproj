@@ -24,8 +24,6 @@
 		7C26894C2660BDC1000E68CA /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C26894A2660BDC1000E68CA /* Bool.swift */; };
 		7C7539C32658FFB200711DE7 /* shared_diskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539B02658FFB100711DE7 /* shared_diskApp.swift */; };
 		7C7539C42658FFB200711DE7 /* shared_diskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539B02658FFB100711DE7 /* shared_diskApp.swift */; };
-		7C7539C52658FFB200711DE7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539B12658FFB100711DE7 /* ContentView.swift */; };
-		7C7539C62658FFB200711DE7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539B12658FFB100711DE7 /* ContentView.swift */; };
 		7C7539C72658FFB200711DE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C7539B22658FFB200711DE7 /* Assets.xcassets */; };
 		7C7539C82658FFB200711DE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C7539B22658FFB200711DE7 /* Assets.xcassets */; };
 		7C7539D42659005500711DE7 /* MimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7539D32659005500711DE7 /* MimeType.swift */; };
@@ -60,6 +58,10 @@
 		7C753A21265B8C6100711DE7 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A20265B8C6100711DE7 /* ActivityIndicator.swift */; };
 		7C753A23265B8C9000711DE7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A22265B8C9000711DE7 /* LoadingView.swift */; };
 		7C753A28265B929600711DE7 /* AlertingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A27265B929600711DE7 /* AlertingView.swift */; };
+		7C81DE7E2663F8540018F3D6 /* MainNavigatoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DE7D2663F8540018F3D6 /* MainNavigatoinView.swift */; };
+		7C81DE7F2663F8540018F3D6 /* MainNavigatoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DE7D2663F8540018F3D6 /* MainNavigatoinView.swift */; };
+		7C81DE812663FC160018F3D6 /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DE802663FC160018F3D6 /* FolderView.swift */; };
+		7C81DE822663FC160018F3D6 /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DE802663FC160018F3D6 /* FolderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,7 +70,6 @@
 		7C2689472660BD8D000E68CA /* View+if.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+if.swift"; sourceTree = "<group>"; };
 		7C26894A2660BDC1000E68CA /* Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
 		7C7539B02658FFB100711DE7 /* shared_diskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shared_diskApp.swift; sourceTree = "<group>"; };
-		7C7539B12658FFB100711DE7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7C7539B22658FFB200711DE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C7539B72658FFB200711DE7 /* shared-disk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "shared-disk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C7539BA2658FFB200711DE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,6 +96,8 @@
 		7C753A20265B8C6100711DE7 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		7C753A22265B8C9000711DE7 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		7C753A27265B929600711DE7 /* AlertingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertingView.swift; sourceTree = "<group>"; };
+		7C81DE7D2663F8540018F3D6 /* MainNavigatoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigatoinView.swift; sourceTree = "<group>"; };
+		7C81DE802663FC160018F3D6 /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,7 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				7C753A25265B923800711DE7 /* Helper */,
-				7C7539B12658FFB100711DE7 /* ContentView.swift */,
+				7C81DE7C2663F7500018F3D6 /* MainScreen */,
 				7C7539FD265B621800711DE7 /* AuthScreens */,
 				7C2689432660B2BB000E68CA /* FirstRouter.swift */,
 			);
@@ -303,6 +306,15 @@
 				7C753A1F265B8C4900711DE7 /* ActivityIndicator */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		7C81DE7C2663F7500018F3D6 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7C81DE7D2663F8540018F3D6 /* MainNavigatoinView.swift */,
+				7C81DE802663FC160018F3D6 /* FolderView.swift */,
+			);
+			path = MainScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,10 +417,10 @@
 				7C753A17265B7FD600711DE7 /* MyAPIService.swift in Sources */,
 				7C753A13265B79A800711DE7 /* AnyTransition+go+back.swift in Sources */,
 				7C753A21265B8C6100711DE7 /* ActivityIndicator.swift in Sources */,
-				7C7539C52658FFB200711DE7 /* ContentView.swift in Sources */,
 				7C7539D92659015200711DE7 /* FileItem.swift in Sources */,
 				7C2689482660BD8D000E68CA /* View+if.swift in Sources */,
 				7C7539E326591AFA00711DE7 /* FilesResponse.swift in Sources */,
+				7C81DE7E2663F8540018F3D6 /* MainNavigatoinView.swift in Sources */,
 				7C7539FF265B622D00711DE7 /* RegistrationView.swift in Sources */,
 				7C7539C32658FFB200711DE7 /* shared_diskApp.swift in Sources */,
 				7C2689412660ABE7000E68CA /* AppError.swift in Sources */,
@@ -418,6 +430,7 @@
 				7C7539D42659005500711DE7 /* MimeType.swift in Sources */,
 				7C753A0B265B6BE200711DE7 /* AuthRouter.swift in Sources */,
 				7C7539E126590C6900711DE7 /* BaseAPIService.swift in Sources */,
+				7C81DE812663FC160018F3D6 /* FolderView.swift in Sources */,
 				7C753A23265B8C9000711DE7 /* LoadingView.swift in Sources */,
 				7C7539D6265900B100711DE7 /* GoogleDriveService.swift in Sources */,
 				7C26894B2660BDC1000E68CA /* Bool.swift in Sources */,
@@ -435,11 +448,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C753A05265B63F900711DE7 /* FilesResponse.swift in Sources */,
-				7C7539C62658FFB200711DE7 /* ContentView.swift in Sources */,
 				7C7539C42658FFB200711DE7 /* shared_diskApp.swift in Sources */,
 				7C26893C2660A3D2000E68CA /* MyAPIService.swift in Sources */,
 				7C753A11265B77E400711DE7 /* TextField.swift in Sources */,
 				7C2689452660B2BB000E68CA /* FirstRouter.swift in Sources */,
+				7C81DE7F2663F8540018F3D6 /* MainNavigatoinView.swift in Sources */,
 				7C2689392660A1A4000E68CA /* LoadingView.swift in Sources */,
 				7C753A09265B640F00711DE7 /* RegistrationView.swift in Sources */,
 				7C753A04265B63F700711DE7 /* FileItem.swift in Sources */,
@@ -455,6 +468,7 @@
 				7C26893E2660A410000E68CA /* StatusReponse.swift in Sources */,
 				7C753A14265B79B500711DE7 /* AnyTransition+go+back.swift in Sources */,
 				7C753A08265B640C00711DE7 /* AuthView.swift in Sources */,
+				7C81DE822663FC160018F3D6 /* FolderView.swift in Sources */,
 				7C2689382660A1A0000E68CA /* AlertingView.swift in Sources */,
 				7C2689492660BD8D000E68CA /* View+if.swift in Sources */,
 				7C26893F2660A412000E68CA /* ErrorResponse.swift in Sources */,

@@ -59,6 +59,8 @@ class BaseAPIService {
                                               _ error: Error?) -> Result<T, AppError> {
         guard let data = data else { return .failure(.network) }
         
+        print(try? JSONSerialization.jsonObject(with: data, options: []))
+        
         if let object = try? JSONDecoder().decode(T.self, from: data) {
             return .success(object)
         }

@@ -13,6 +13,8 @@ enum AppError: Error {
     
     case passwordToShort
     
+    case credentialsIsNotValid
+    
     case unowned
     
     
@@ -20,6 +22,8 @@ enum AppError: Error {
         switch stringError {
         case "password_too_short":
             self = .passwordToShort
+        case "credentials_is_not_valid":
+            self = .credentialsIsNotValid
         default:
             self = .unowned
         }
@@ -31,6 +35,8 @@ enum AppError: Error {
             return "Проблемы с интернетом"
         case .passwordToShort:
             return "Пароль короткий"
+        case .credentialsIsNotValid:
+            return "Обновите разрешения"
         case .unowned:
             return "Непонятно"
         }
