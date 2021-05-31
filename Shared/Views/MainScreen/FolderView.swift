@@ -39,22 +39,52 @@ struct FolderView: View {
                                 .lineLimit(2)
                             Spacer()
                         }
+//                        .onDrag { NSItemProvider(object: URL(string: "https://apple.com")! as NSURL) }
                     }
                 }
                 .padding()
             }
+            .onDrop(of: [.fileURL], delegate: FileDropDelegate(afterUpload: updateFiles))
             .onAppear {
-                GoogleDriveService().files(in: folderName) { result in
-                    switch result {
-                    case .failure(let error):
-                        alertText = error.description
-                        showAlert = true
-                    case .success(let fileItems):
-                        files = fileItems
-                    }
+                updateFiles()
+            }
+        }
+    }
+    
+    private func updateFiles() {
+        GoogleDriveService().files(in: folderName) { result in
+            switch result {
+            case .failure(let error):
+                alertText = error.description
+                showAlert = true
+            case .success(let fileItems):
+                files = fileItems
+            }
+        }
+    }
+}
+
+struct FileDropDelegate: DropDelegate {
+    
+    let afterUpload: () -> Void
+    
+    func performDrop(info: DropInfo) -> Bool {
+        guard info.hasItemsConforming(to: [.fileURL]) else {
+            return false
+        }
+        
+        let items = info.itemProviders(for: [.fileURL])
+        for item in items {
+            _ = item.loadObject(ofClass: URL.self) { url, _ in
+                print(url)
+                GoogleDriveService().uploadFile(fileUrl: url!, name: "first_he_he", folderID: "root") { result in
+                    print(result)
+                    afterUpload()
                 }
             }
         }
+        
+        return true
     }
 }
 

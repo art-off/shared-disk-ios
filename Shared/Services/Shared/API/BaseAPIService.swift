@@ -31,14 +31,22 @@ class BaseAPIService {
                             path: String,
                             token: String? = nil,
                             queryParams: [String: String]? = nil,
-                            json: [String: Any]? = nil,
+                            json: BaseAPI.JSONType? = nil,
+                            headers: [String: String]? = nil,
                             completion: @escaping (Result<T, AppError>) -> Void) {
         
         let request: URLRequest
         if let token = token {
-            request = baseApi.requestWithBearerToken(method, token: token, path: path, queryParams: queryParams, json: json)
+            request = baseApi.requestWithBearerToken(
+                method,
+                token: token,
+                path: path,
+                queryParams: queryParams,
+                json: json,
+                headers: headers
+            )
         } else {
-            request = baseApi.request(method, path: path, queryParams: queryParams, json: json)
+            request = baseApi.request(method, path: path, queryParams: queryParams, json: json, headers: headers)
         }
 
         task = session.dataTask(with: request) { data, response, error in
@@ -47,6 +55,28 @@ class BaseAPIService {
         }
         task?.resume()
     }
+//
+//    func load<T: Decodable>(_ type: T.Type,
+//                            method: BaseAPI.HTTPMethod,
+//                            path: String,
+//                            token: String? = nil,
+//                            queryParams: [String: String]? = nil,
+//                            jsonData: Data? = nil,
+//                            headers: [String: String]? = nil,
+//                            completion: @escaping (Result<T, AppError>) -> Void) {
+//        let request: URLRequest
+//        if let token = token {
+//            request = baseApi.requestWithBearerToken(method, token: token, path: path, queryParams: queryParams, jsonData: jsonData, headers: headers)
+//        } else {
+//            request = baseApi.request(method, path: path, queryParams: queryParams, jsonData: jsonData, headers: headers)
+//        }
+//
+//        task = session.dataTask(with: request) { data, response, error in
+//            let handleResult = self.handleResponse(T.self, data, response, error)
+//            completion(handleResult)
+//        }
+//        task?.resume()
+//    }
     
     func cancelLoad() {
         task?.cancel()

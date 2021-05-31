@@ -16,11 +16,11 @@ class MyAPIServic {
             StatusResponse.self,
             method: .post,
             path: "/registration",
-            json: [
+            json: .dict([
                 "name": login,
                 "email": email,
                 "password": password,
-            ],
+            ]),
             completion: { status in
                 switch status {
                 case .failure(let error):
@@ -37,10 +37,10 @@ class MyAPIServic {
             UserResponse.self,
             method: .post,
             path: "/auth",
-            json: [
+            json: .dict([
                 "email": email,
                 "password": password,
-            ],
+            ]),
             completion: { tokenResult in
                 switch tokenResult {
                 case .failure(_):
