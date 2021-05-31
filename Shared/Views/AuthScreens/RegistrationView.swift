@@ -16,6 +16,7 @@ struct RegistrationView: View {
     @State var alertText = ""
     
     @State var login = ""
+    @State var email = ""
     @State var password = ""
     
     var body: some View {
@@ -44,6 +45,13 @@ struct RegistrationView: View {
                             .cornerRadius(20)
                             .shadow(radius: 5)
                             .padding(.bottom, 16)
+                        TextField("Email", text: $email)
+                            .textFieldStyle(PlainTextFieldStyle())
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(20)
+                            .shadow(radius: 5)
+                            .padding(.bottom, 16)
                         SecureField("Password", text: $password)
                             .textFieldStyle(PlainTextFieldStyle())
                             .padding()
@@ -54,17 +62,22 @@ struct RegistrationView: View {
                     .padding()
                     
                     Button(action: {
-                        guard !login.isEmpty || !password.isEmpty else { return }
+                        guard !login.isEmpty ||
+                                !password.isEmpty ||
+                                !email.isEmpty
+                        else { return }
                         
                         isLoading = true
                         
                         MyAPIServic().registration(
                             login: login,
+                            email: email,
                             password: password,
                             completion: { text in
                                 DispatchQueue.main.async {
                                     self.login = ""
                                     self.password = ""
+                                    self.email = ""
                                     self.isLoading = false
                                     self.alertText = text
                                     self.isAlerting = true

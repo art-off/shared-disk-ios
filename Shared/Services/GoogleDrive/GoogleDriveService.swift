@@ -17,7 +17,7 @@ class GoogleDriveService {
             FilesResponse.self,
             method: .get,
             path: "/files",
-            token: "354222e10b9fd3fe03ff39e21a0b8819060e0c77fb7e5ee9fdeadf276f777c52",
+            token: UserStorage.myToken,
             queryParams: ["folder": folder],
             completion: { fileResponseResult in
                 switch fileResponseResult {
@@ -25,6 +25,42 @@ class GoogleDriveService {
                     completion(.failure(error))
                 case .success(let fileResponse):
                     completion(.success(fileResponse.files))
+                }
+            }
+        )
+    }
+    
+    func refreshToken(completion: @escaping (Result<URL, AppError>) -> Void) {
+        serverService.load(
+            AuthUrlResponse.self,
+            method: .get,
+            path: "/refresh_authorize/google_drive",
+            token: UserStorage.myToken,
+            completion: { result in
+                switch result {
+                case .failure(let error):
+                    completion(.failure(error))
+                case .success(let response):
+                    completion(.success(response.authorizationUrl))
+                }
+            }
+        )
+    }
+    
+    func authGoogleDrive(completion: @escaping (Result<Bool, AppError>) -> Void) {
+        serverService.load(
+            TokenResponse.self,
+            method: .get,
+            path: "/authorize/google_drive",
+            token: UserStorage.myToken,
+            completion: { result in
+                switch result {
+                case .failure(let error):
+                    completion(.failure(error))
+                case .success(let response):
+                    UserStorage.googleToken = response.token
+                    completion(.success(true))
+//                    completion(.success(response.token))
                 }
             }
         )

@@ -12,7 +12,7 @@ struct AuthView: View {
     var goToGeneral: () -> Void
     @Binding var routedCurrScreen: AuthRouter.Screen
     
-    @State var login = ""
+    @State var email = ""
     @State var password = ""
     
     @State var alertingText = ""
@@ -30,7 +30,7 @@ struct AuthView: View {
                     .padding(.bottom, 50)
                 
                 VStack {
-                    TextField("Login", text: $login)
+                    TextField("Email", text: $email)
                         .textFieldStyle(PlainTextFieldStyle())
                         .padding()
                         .background(Color.white)
@@ -47,10 +47,10 @@ struct AuthView: View {
                 .padding([.leading, .trailing], 20)
                 
                 Button(action: {
-                    guard !login.isEmpty && !password.isEmpty else { return }
+                    guard !email.isEmpty && !password.isEmpty else { return }
                     
                     MyAPIServic().auth(
-                        login: login,
+                        email: email,
                         password: password,
                         completion: { fine in
                             guard fine else {

@@ -50,6 +50,15 @@ extension MimeType: Decodable {
 
 extension MimeType {
     
+    var isImage: Bool {
+        switch self {
+        case .png, .jpg, .gif:
+            return true
+        default:
+            return false
+        }
+    }
+    
     var stringType: String {
         return self.rawValue
     }

@@ -11,7 +11,7 @@
 		7C2689392660A1A4000E68CA /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A22265B8C9000711DE7 /* LoadingView.swift */; };
 		7C26893B2660A3B5000E68CA /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A20265B8C6100711DE7 /* ActivityIndicator.swift */; };
 		7C26893C2660A3D2000E68CA /* MyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A16265B7FD500711DE7 /* MyAPIService.swift */; };
-		7C26893D2660A40D000E68CA /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A18265B809400711DE7 /* TokenResponse.swift */; };
+		7C26893D2660A40D000E68CA /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A18265B809400711DE7 /* UserResponse.swift */; };
 		7C26893E2660A410000E68CA /* StatusReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A1B265B81CD00711DE7 /* StatusReponse.swift */; };
 		7C26893F2660A412000E68CA /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A1D265B879000711DE7 /* ErrorResponse.swift */; };
 		7C2689412660ABE7000E68CA /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2689402660ABE7000E68CA /* AppError.swift */; };
@@ -52,7 +52,7 @@
 		7C753A13265B79A800711DE7 /* AnyTransition+go+back.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A12265B79A800711DE7 /* AnyTransition+go+back.swift */; };
 		7C753A14265B79B500711DE7 /* AnyTransition+go+back.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A12265B79A800711DE7 /* AnyTransition+go+back.swift */; };
 		7C753A17265B7FD600711DE7 /* MyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A16265B7FD500711DE7 /* MyAPIService.swift */; };
-		7C753A19265B809400711DE7 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A18265B809400711DE7 /* TokenResponse.swift */; };
+		7C753A19265B809400711DE7 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A18265B809400711DE7 /* UserResponse.swift */; };
 		7C753A1C265B81CD00711DE7 /* StatusReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A1B265B81CD00711DE7 /* StatusReponse.swift */; };
 		7C753A1E265B879000711DE7 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A1D265B879000711DE7 /* ErrorResponse.swift */; };
 		7C753A21265B8C6100711DE7 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C753A20265B8C6100711DE7 /* ActivityIndicator.swift */; };
@@ -62,6 +62,12 @@
 		7C81DE7F2663F8540018F3D6 /* MainNavigatoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DE7D2663F8540018F3D6 /* MainNavigatoinView.swift */; };
 		7C81DE812663FC160018F3D6 /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DE802663FC160018F3D6 /* FolderView.swift */; };
 		7C81DE822663FC160018F3D6 /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DE802663FC160018F3D6 /* FolderView.swift */; };
+		7C81DE852664A8120018F3D6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DE842664A8120018F3D6 /* ProfileView.swift */; };
+		7C81DE862664A8320018F3D6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DE842664A8120018F3D6 /* ProfileView.swift */; };
+		7C81DE882664EE0B0018F3D6 /* AuthUrlResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DE872664EE0B0018F3D6 /* AuthUrlResponse.swift */; };
+		7C81DE892664EE640018F3D6 /* AuthUrlResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DE872664EE0B0018F3D6 /* AuthUrlResponse.swift */; };
+		7C81DE8E2664F0FA0018F3D6 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DE8D2664F0FA0018F3D6 /* TokenResponse.swift */; };
+		7C81DE8F2664F1150018F3D6 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DE8D2664F0FA0018F3D6 /* TokenResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,7 +96,7 @@
 		7C753A0F265B77DC00711DE7 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		7C753A12265B79A800711DE7 /* AnyTransition+go+back.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransition+go+back.swift"; sourceTree = "<group>"; };
 		7C753A16265B7FD500711DE7 /* MyAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAPIService.swift; sourceTree = "<group>"; };
-		7C753A18265B809400711DE7 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
+		7C753A18265B809400711DE7 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		7C753A1B265B81CD00711DE7 /* StatusReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusReponse.swift; sourceTree = "<group>"; };
 		7C753A1D265B879000711DE7 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		7C753A20265B8C6100711DE7 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
@@ -98,6 +104,9 @@
 		7C753A27265B929600711DE7 /* AlertingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertingView.swift; sourceTree = "<group>"; };
 		7C81DE7D2663F8540018F3D6 /* MainNavigatoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigatoinView.swift; sourceTree = "<group>"; };
 		7C81DE802663FC160018F3D6 /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
+		7C81DE842664A8120018F3D6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		7C81DE872664EE0B0018F3D6 /* AuthUrlResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUrlResponse.swift; sourceTree = "<group>"; };
+		7C81DE8D2664F0FA0018F3D6 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,9 +281,11 @@
 			isa = PBXGroup;
 			children = (
 				7C7539E226591AFA00711DE7 /* FilesResponse.swift */,
-				7C753A18265B809400711DE7 /* TokenResponse.swift */,
+				7C753A18265B809400711DE7 /* UserResponse.swift */,
 				7C753A1B265B81CD00711DE7 /* StatusReponse.swift */,
 				7C753A1D265B879000711DE7 /* ErrorResponse.swift */,
+				7C81DE872664EE0B0018F3D6 /* AuthUrlResponse.swift */,
+				7C81DE8D2664F0FA0018F3D6 /* TokenResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -311,10 +322,19 @@
 		7C81DE7C2663F7500018F3D6 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7C81DE832664A8030018F3D6 /* ProfileScreen */,
 				7C81DE7D2663F8540018F3D6 /* MainNavigatoinView.swift */,
 				7C81DE802663FC160018F3D6 /* FolderView.swift */,
 			);
 			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		7C81DE832664A8030018F3D6 /* ProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7C81DE842664A8120018F3D6 /* ProfileView.swift */,
+			);
+			path = ProfileScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,16 +435,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C753A17265B7FD600711DE7 /* MyAPIService.swift in Sources */,
+				7C81DE852664A8120018F3D6 /* ProfileView.swift in Sources */,
 				7C753A13265B79A800711DE7 /* AnyTransition+go+back.swift in Sources */,
 				7C753A21265B8C6100711DE7 /* ActivityIndicator.swift in Sources */,
 				7C7539D92659015200711DE7 /* FileItem.swift in Sources */,
 				7C2689482660BD8D000E68CA /* View+if.swift in Sources */,
 				7C7539E326591AFA00711DE7 /* FilesResponse.swift in Sources */,
 				7C81DE7E2663F8540018F3D6 /* MainNavigatoinView.swift in Sources */,
+				7C81DE882664EE0B0018F3D6 /* AuthUrlResponse.swift in Sources */,
 				7C7539FF265B622D00711DE7 /* RegistrationView.swift in Sources */,
 				7C7539C32658FFB200711DE7 /* shared_diskApp.swift in Sources */,
 				7C2689412660ABE7000E68CA /* AppError.swift in Sources */,
 				7C7539FA265B5B4000711DE7 /* UserStorage.swift in Sources */,
+				7C81DE8E2664F0FA0018F3D6 /* TokenResponse.swift in Sources */,
 				7C2689442660B2BB000E68CA /* FirstRouter.swift in Sources */,
 				7C7539DC265907BF00711DE7 /* URL+appendQueryItem.swift in Sources */,
 				7C7539D42659005500711DE7 /* MimeType.swift in Sources */,
@@ -435,7 +458,7 @@
 				7C7539D6265900B100711DE7 /* GoogleDriveService.swift in Sources */,
 				7C26894B2660BDC1000E68CA /* Bool.swift in Sources */,
 				7C7539FC265B5CA500711DE7 /* AuthView.swift in Sources */,
-				7C753A19265B809400711DE7 /* TokenResponse.swift in Sources */,
+				7C753A19265B809400711DE7 /* UserResponse.swift in Sources */,
 				7C753A28265B929600711DE7 /* AlertingView.swift in Sources */,
 				7C753A1E265B879000711DE7 /* ErrorResponse.swift in Sources */,
 				7C753A1C265B81CD00711DE7 /* StatusReponse.swift in Sources */,
@@ -451,6 +474,7 @@
 				7C7539C42658FFB200711DE7 /* shared_diskApp.swift in Sources */,
 				7C26893C2660A3D2000E68CA /* MyAPIService.swift in Sources */,
 				7C753A11265B77E400711DE7 /* TextField.swift in Sources */,
+				7C81DE8F2664F1150018F3D6 /* TokenResponse.swift in Sources */,
 				7C2689452660B2BB000E68CA /* FirstRouter.swift in Sources */,
 				7C81DE7F2663F8540018F3D6 /* MainNavigatoinView.swift in Sources */,
 				7C2689392660A1A4000E68CA /* LoadingView.swift in Sources */,
@@ -458,13 +482,15 @@
 				7C753A04265B63F700711DE7 /* FileItem.swift in Sources */,
 				7C753A00265B63E800711DE7 /* UserStorage.swift in Sources */,
 				7C753A06265B63FC00711DE7 /* MimeType.swift in Sources */,
+				7C81DE892664EE640018F3D6 /* AuthUrlResponse.swift in Sources */,
 				7C753A01265B63EE00711DE7 /* URL+appendQueryItem.swift in Sources */,
+				7C81DE862664A8320018F3D6 /* ProfileView.swift in Sources */,
 				7C753A0D265B738900711DE7 /* AuthRouter.swift in Sources */,
 				7C753A02265B63F200711DE7 /* BaseAPI.swift in Sources */,
 				7C2689422660ABE8000E68CA /* AppError.swift in Sources */,
 				7C26894C2660BDC1000E68CA /* Bool.swift in Sources */,
 				7C753A03265B63F400711DE7 /* BaseAPIService.swift in Sources */,
-				7C26893D2660A40D000E68CA /* TokenResponse.swift in Sources */,
+				7C26893D2660A40D000E68CA /* UserResponse.swift in Sources */,
 				7C26893E2660A410000E68CA /* StatusReponse.swift in Sources */,
 				7C753A14265B79B500711DE7 /* AnyTransition+go+back.swift in Sources */,
 				7C753A08265B640C00711DE7 /* AuthView.swift in Sources */,

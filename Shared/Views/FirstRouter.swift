@@ -21,7 +21,11 @@ struct FirstRouter: View {
         case .authScreen:
             AnyView(AuthRouter(topRouterScreen: $currScreen))
         case .generalScreen:
-            AnyView(MainNavigatoinView())
+            AnyView(MainNavigatoinView(goToAuthScreens: {
+                withAnimation {
+                    currScreen = .authScreen
+                }
+            }))
                 .transition(.opacity)
         }
     }

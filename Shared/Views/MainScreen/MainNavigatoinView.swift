@@ -9,10 +9,12 @@ import SwiftUI
 
 struct MainNavigatoinView: View {
     
+    var goToAuthScreens: () -> Void
+    
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: Text("Navigate")) {
+                NavigationLink(destination: ProfileView(goToAuthScreens: goToAuthScreens)) {
                     Text("Аккаунт")
                 }
                 NavigationLink(destination: FolderView(folderName: "root")) {
@@ -26,6 +28,6 @@ struct MainNavigatoinView: View {
 
 struct MainNavigatoinView_Previews: PreviewProvider {
     static var previews: some View {
-        MainNavigatoinView()
+        MainNavigatoinView(goToAuthScreens: { })
     }
 }
