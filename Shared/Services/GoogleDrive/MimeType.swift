@@ -9,7 +9,7 @@ import Foundation
 
 enum MimeType: String {
     
-    case folder = "folder"
+    case folder = "application/vnd.google-apps.folder"
     
     case document = "application/vnd.google-apps.document",
          spreadsheet = "application/vnd.google-apps.spreadsheet"

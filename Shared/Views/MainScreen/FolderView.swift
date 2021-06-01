@@ -9,13 +9,10 @@ import SwiftUI
 
 struct FolderView: View {
     
-    @State var files: [FileItem] = [
-        FileItem(id: "sdlfkj", name: "ff", mineType: .csv1),
-        FileItem(id: "sdlasdffkj", name: "ffffsdfasdfasdfsa", mineType: .csv1),
-        FileItem(id: "sdsdddlfkj", name: "ff", mineType: .csv1),
-        FileItem(id: "sdlvxcvfkj", name: "ff", mineType: .csv1),
-        FileItem(id: "sdwwwlfkj", name: "ff", mineType: .csv1),
-    ]
+    @State var actionOnSheet: (String) -> Void = { _ in }
+    @State var presentSheet = false
+    
+    @State var files: [FileItem] = []
     
     @State var folderName: String
     
@@ -39,15 +36,40 @@ struct FolderView: View {
                                 .lineLimit(2)
                             Spacer()
                         }
+                        .contextMenu(ContextMenu(menuItems: {
+                            /*@START_MENU_TOKEN@*/Text("Menu Item 1")/*@END_MENU_TOKEN@*/
+                            /*@START_MENU_TOKEN@*/Text("Menu Item 2")/*@END_MENU_TOKEN@*/
+                            /*@START_MENU_TOKEN@*/Text("Menu Item 3")/*@END_MENU_TOKEN@*/
+                        }))
 //                        .onDrag { NSItemProvider(object: URL(string: "https://apple.com")! as NSURL) }
                     }
                 }
                 .padding()
             }
-            .onDrop(of: [.fileURL], delegate: FileDropDelegate(afterUpload: updateFiles))
+            .onDrop(of: [.fileURL], delegate: FileDropDelegate(folderName: folderName, afterUpload: updateFiles))
             .onAppear {
                 updateFiles()
             }
+            .contextMenu(ContextMenu(menuItems: {
+                Button("Создать папку") {
+                    actionOnSheet = { name in
+                        print(name)
+                        GoogleDriveService().createFile(
+                            name: name,
+                            mimeType: .folder,
+                            folderID: folderName,
+                            completion: { result in
+                                print(result)
+                                updateFiles()
+                            }
+                        )
+                    }
+                    presentSheet = true
+                }
+            }))
+        }
+        .sheet(isPresented: $presentSheet) {
+            SheetView(action: $actionOnSheet)
         }
     }
     
@@ -66,6 +88,7 @@ struct FolderView: View {
 
 struct FileDropDelegate: DropDelegate {
     
+    let folderName: String
     let afterUpload: () -> Void
     
     func performDrop(info: DropInfo) -> Bool {
@@ -77,7 +100,7 @@ struct FileDropDelegate: DropDelegate {
         for item in items {
             _ = item.loadObject(ofClass: URL.self) { url, _ in
                 print(url)
-                GoogleDriveService().uploadFile(fileUrl: url!, name: "first_he_he", folderID: "root") { result in
+                GoogleDriveService().uploadFile(fileUrl: url!, folderID: folderName) { result in
                     print(result)
                     afterUpload()
                 }
@@ -87,6 +110,34 @@ struct FileDropDelegate: DropDelegate {
         return true
     }
 }
+
+
+
+struct SheetView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
+    @Binding var action: (String) -> Void
+    @State var name = ""
+
+    var body: some View {
+        HStack(alignment: .top) {
+            TextField("Название", text: $name)
+            VStack {
+                Button("Создать") {
+                    guard !name.isEmpty else { return }
+                    action(name)
+                    presentationMode.wrappedValue.dismiss()
+                }
+                Button("Отменить") {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }
+        }
+        .frame(width: 300)
+        .padding()
+    }
+}
+
 
 struct FolderView_Previews: PreviewProvider {
     static var previews: some View {
