@@ -71,7 +71,13 @@ struct FolderView: View {
                                 }
                             }
                             .contextMenu(ContextMenu(menuItems: {
-                                Text("Полное название: \(file.name)")
+                                Text(file.name)
+                                Button("Удалить") {
+                                    GoogleDriveService().deleteFile(fileID: file.id) { result in
+                                        // mne vse ravno ya pank
+                                        updateFiles()
+                                    }
+                                }
                             }))
     //                        .onDrag { NSItemProvider(object: URL(string: "https://apple.com")! as NSURL) }
                         }
@@ -107,7 +113,7 @@ struct FolderView: View {
     }
     
     private func updateFiles() {
-        updateFiles(folder: folderHistory.last!)
+        updateFiles(folder: folderHistory.last!, notAddnotRemove: true)
     }
     
     private func updateFiles(folder: Folder, back: Bool = false, notAddnotRemove: Bool = false) {

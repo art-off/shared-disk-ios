@@ -51,21 +51,6 @@ struct BaseAPI {
         return request
     }
     
-//    func request(_ method: HTTPMethod,
-//                 path: String,
-//                 queryParams: [String: String]? = nil,
-//                 json: [String: Any]? = nil,
-//                 headers: [String: String]? = nil) -> URLRequest {
-//
-//        var jsonData: Data?
-//        if let json = json {
-//            jsonData = try? JSONSerialization.data(withJSONObject: json, options: [])
-//        }
-//        let request = self.request(method, path: path, queryParams: queryParams, jsonData: jsonData, headers: headers)
-//
-//        return request
-//    }
-    
     func requestWithBearerToken(_ method: HTTPMethod,
                                 token: String,
                                 path: String,
@@ -79,23 +64,11 @@ struct BaseAPI {
         return request
     }
     
-//    func requestWithBearerToken(_ method: HTTPMethod,
-//                                token: String,
-//                                path: String,
-//                                queryParams: [String: String]? = nil,
-//                                json: [String: Any]? = nil,
-//                                headers: [String: String]? = nil) -> URLRequest {
-//
-//        var request = self.request(method, path: path, queryParams: queryParams, json: json, headers: headers)
-//
-//        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-//        return request
-//    }
-    
     enum HTTPMethod: String {
         case get = "GET"
         case post = "POST"
         case put = "PUT"
+        case delete = "DELETE"
     }
     
     enum JSONType {
