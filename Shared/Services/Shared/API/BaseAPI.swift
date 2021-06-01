@@ -32,7 +32,7 @@ struct BaseAPI {
             }
         }
         
-        var request = URLRequest(url: URL(string: "\(stringAddress)\(path)")!)
+        var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         if let json = json {
             switch json {

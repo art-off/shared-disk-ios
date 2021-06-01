@@ -17,7 +17,7 @@ struct MainNavigatoinView: View {
                 NavigationLink(destination: ProfileView(goToAuthScreens: goToAuthScreens)) {
                     Text("Аккаунт")
                 }
-                NavigationLink(destination: FolderView(folderName: "root")) {
+                NavigationLink(destination: FolderView(folderHistory: [("root", "root")])) {
                     Text("Диск")
                 }
             }

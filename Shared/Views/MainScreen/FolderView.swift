@@ -7,14 +7,18 @@
 
 import SwiftUI
 
+typealias Folder = (name: String, id: String)
+
 struct FolderView: View {
+    
+    @State var selectedFileID = ""
     
     @State var actionOnSheet: (String) -> Void = { _ in }
     @State var presentSheet = false
     
     @State var files: [FileItem] = []
     
-    @State var folderName: String
+    @State var folderHistory: [Folder]
     
     @State var showAlert = false
     @State var alertText = ""
@@ -22,33 +26,62 @@ struct FolderView: View {
     var body: some View {
         AlertingView(isShowing: $showAlert, alertText: $alertText) {
             ScrollView {
-                LazyVGrid(
-                    columns: [GridItem(.adaptive(minimum: 90))],
-                    alignment: .center,
-                    spacing: 16
-                ) {
-                    ForEach(files) { file in
-                        VStack {
-                            file.mineType.image
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 50)
-                            Text(file.name)
-                                .lineLimit(2)
-                            Spacer()
+                
+                VStack {
+                    ZStack {
+                        HStack {
+                            if folderHistory.count > 1 {
+                                let previousFolder = folderHistory[folderHistory.count - 2]
+                                Button("< " + previousFolder.name) {
+                                    updateFiles(folder: previousFolder, back: true)
+                                }
+                                Spacer()
+                            }
                         }
-                        .padding()
-                        .contextMenu(ContextMenu(menuItems: {
-                            Text("Полное название: \(file.name)")
-                        }))
-//                        .onDrag { NSItemProvider(object: URL(string: "https://apple.com")! as NSURL) }
+                        Text(folderHistory.last!.name)
+                            .font(.title)
                     }
+                    .padding()
+                    LazyVGrid(
+                        columns: [GridItem(.adaptive(minimum: 90))],
+                        alignment: .center,
+                        spacing: 16
+                    ) {
+                        ForEach(files) { file in
+                            VStack {
+                                file.mineType.image
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: 50)
+                                Text(file.name)
+                                    .lineLimit(2)
+                                Spacer()
+                            }
+                            .padding()
+                            .if(selectedFileID == file.id) { view in
+                                view
+                                    .background(Color.gray.opacity(0.3))
+                                    .cornerRadius(10)
+                            }
+                            .onTapGesture {
+                                if selectedFileID == file.id {
+                                    updateFiles(folder: (file.name, file.id))
+                                } else {
+                                    selectedFileID = file.id
+                                }
+                            }
+                            .contextMenu(ContextMenu(menuItems: {
+                                Text("Полное название: \(file.name)")
+                            }))
+    //                        .onDrag { NSItemProvider(object: URL(string: "https://apple.com")! as NSURL) }
+                        }
+                    }
+                    .padding()
                 }
-                .padding()
             }
-            .onDrop(of: [.fileURL], delegate: FileDropDelegate(folderName: folderName, afterUpload: updateFiles))
+            .onDrop(of: [.fileURL], delegate: FileDropDelegate(folderName: folderHistory.last!.id, afterUpload: updateFiles))
             .onAppear {
-                updateFiles()
+                updateFiles(folder: folderHistory.last!, notAddnotRemove: true)
             }
             .contextMenu(ContextMenu(menuItems: {
                 Button("Создать папку") {
@@ -57,7 +90,7 @@ struct FolderView: View {
                         GoogleDriveService().createFile(
                             name: name,
                             mimeType: .folder,
-                            folderID: folderName,
+                            folderID: folderHistory.last!.id,
                             completion: { result in
                                 print(result)
                                 updateFiles()
@@ -74,13 +107,24 @@ struct FolderView: View {
     }
     
     private func updateFiles() {
-        GoogleDriveService().files(in: folderName) { result in
+        updateFiles(folder: folderHistory.last!)
+    }
+    
+    private func updateFiles(folder: Folder, back: Bool = false, notAddnotRemove: Bool = false) {
+        print("FINE1")
+        GoogleDriveService().files(in: folder.id) { result in
             switch result {
             case .failure(let error):
                 alertText = error.description
                 showAlert = true
             case .success(let fileItems):
                 files = fileItems
+                guard !notAddnotRemove else { return }
+                if back {
+                    folderHistory.removeLast()
+                } else {
+                    folderHistory.append(folder)
+                }
             }
         }
     }
@@ -141,6 +185,6 @@ struct SheetView: View {
 
 struct FolderView_Previews: PreviewProvider {
     static var previews: some View {
-        FolderView(folderName: "root")
+        FolderView(folderHistory: [("name", "root")])
     }
 }
