@@ -29,17 +29,17 @@ struct FolderView: View {
                 ) {
                     ForEach(files) { file in
                         VStack {
-                            Rectangle()
-                                .foregroundColor(.red)
-                                .aspectRatio(contentMode: .fit)
+                            file.mineType.image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 50)
                             Text(file.name)
                                 .lineLimit(2)
                             Spacer()
                         }
+                        .padding()
                         .contextMenu(ContextMenu(menuItems: {
-                            /*@START_MENU_TOKEN@*/Text("Menu Item 1")/*@END_MENU_TOKEN@*/
-                            /*@START_MENU_TOKEN@*/Text("Menu Item 2")/*@END_MENU_TOKEN@*/
-                            /*@START_MENU_TOKEN@*/Text("Menu Item 3")/*@END_MENU_TOKEN@*/
+                            Text("Полное название: \(file.name)")
                         }))
 //                        .onDrag { NSItemProvider(object: URL(string: "https://apple.com")! as NSURL) }
                     }

@@ -5,11 +5,11 @@
 //  Created by Artem Rylov on 22.05.2021.
 //
 
-import Foundation
+import SwiftUI
 
 enum MimeType: String {
     
-    case folder = "application/vnd.google-apps.folder"
+    case folder = "folder"
     
     case document = "application/vnd.google-apps.document",
          spreadsheet = "application/vnd.google-apps.spreadsheet"
@@ -50,17 +50,23 @@ extension MimeType: Decodable {
 
 extension MimeType {
     
-    var isImage: Bool {
+    var image: Image {
         switch self {
-        case .png, .jpg, .gif:
-            return true
+        case .folder:
+            return Image(systemName: "folder.fill")
         default:
-            return false
+            return Image(systemName: "doc")
         }
     }
     
     var stringType: String {
-        return self.rawValue
+        // Фолдер отдельно потому что гугл дебилы и все
+        switch self {
+        case .folder:
+            return "application/vnd.google-apps.folder"
+        default:
+            return self.rawValue
+        }
     }
     
     init?(fromExtention ext: String) {
