@@ -70,7 +70,7 @@ class GoogleDriveService {
     func createFile(name: String, mimeType: MimeType, folderID: String, completion: @escaping (Result<Bool, AppError>) -> Void) {
         googleService.load(
             FileItem.self,
-            method: .post,
+            method: .put,
             path: "/drive/v3/files",
             token: UserStorage.googleToken,
             json: .dict([
@@ -129,6 +129,34 @@ class GoogleDriveService {
         )
     }
     
+    func updateFile(fileUrl: URL, fileID: String, completion: @escaping (Result<Bool, AppError>) -> Void) {
+        let (data, boundary) = dataAndBoundaryForUploadFile(fileUrl: fileUrl)
+        
+        googleService.load(
+            FilesResponse.self,
+            method: .patch,
+            path: "/upload/drive/v3/files/\(fileID)",
+            token: UserStorage.googleToken,
+            queryParams: [
+                "uploadType": "multipart",
+                "key": "AIzaSyA2XuDTRAAyBFbDwbuWq-B_WvRm8HDT2x8",
+            ],
+            json: .data(data),
+            headers: [
+                "Content-Type": "multipart/related; boundary=\(boundary)",
+                "Content-Length": "\(data.count)",
+            ],
+            completion: { result in
+                switch result {
+                case .failure(let error):
+                    completion(.failure(error))
+                case .success(_):
+                    completion(.success(true))
+                }
+            }
+        )
+    }
+    
     func donwloadFile(name: String, fileID: String, mimeType: String, completion: @escaping (Result<Bool, AppError>) -> Void) {
         googleService.downloadFile(
             name: name,
@@ -141,7 +169,7 @@ class GoogleDriveService {
         )
     }
     
-    private func dataAndBoundaryForUploadFile(fileUrl: URL, folderID: String) -> (Data, String) {
+    private func dataAndBoundaryForUploadFile(fileUrl: URL, folderID: String? = nil) -> (Data, String) {
         let boundary = UUID().uuidString
         
         var mimeType: MimeType = .txt
@@ -151,10 +179,12 @@ class GoogleDriveService {
             mimeType = .folder
         }
         
-        let json: [String : Any] = [
+        var json: [String : Any] = [
             "name": fileUrl.lastPathComponent,
-            "parents": [folderID],
         ]
+        if let folderID = folderID {
+            json["parents"] = [folderID]
+        }
         
         let contentOfFile = (try? Data(contentsOf: fileUrl)) ?? Data()
         

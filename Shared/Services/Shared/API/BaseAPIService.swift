@@ -37,10 +37,18 @@ class BaseAPIService {
                 return
             }
             
-            try! FileManager.default.copyItem(
-                at: tmpLocalUrl,
-                to: downloadsDirectoryUrl.appendingPathComponent(name)
-            )
+            var index = 0
+            while true {
+                do {
+                    try FileManager.default.copyItem(
+                        at: tmpLocalUrl,
+                        to: downloadsDirectoryUrl.appendingPathComponent(name + (index != 0 ? String(index) : ""))
+                    )
+                    break
+                } catch {
+                    index += 1
+                }
+            }
             completion(.success(true))
         }.resume()
     }
@@ -82,7 +90,9 @@ class BaseAPIService {
                                               _ error: Error?) -> Result<T, AppError> {
         guard let data = data else { return .failure(.network) }
         
+        print("RESPONSE")
         print(try? JSONSerialization.jsonObject(with: data, options: []))
+        print((response as? HTTPURLResponse)?.statusCode)
         
         if let object = try? JSONDecoder().decode(T.self, from: data) {
             return .success(object)

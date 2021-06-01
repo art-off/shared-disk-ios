@@ -65,7 +65,11 @@ struct FolderView: View {
                             }
                             .onTapGesture {
                                 if selectedFileID == file.id {
-                                    updateFiles(folder: (file.name, file.id))
+                                    if file.mineType == .folder {
+                                        updateFiles(folder: (file.name, file.id))
+                                    } else {
+                                        // TODO: Сделать открытие инфв о файле (сколько занимает и изменения файлов)
+                                    }
                                 } else {
                                     selectedFileID = file.id
                                 }
@@ -84,13 +88,12 @@ struct FolderView: View {
                                     }
                                 }
                             }))
-    //                        .onDrag { NSItemProvider(object: URL(string: "https://apple.com")! as NSURL) }
                         }
                     }
                     .padding()
                 }
             }
-            .onDrop(of: [.fileURL], delegate: FileDropDelegate(folderName: folderHistory.last!.id, afterUpload: updateFiles))
+            .onDrop(of: [.fileURL], delegate: FileDropDelegate(filesList: files, folderName: folderHistory.last!.id, afterUpload: updateFiles))
             .onAppear {
                 updateFiles(folder: folderHistory.last!, notAddnotRemove: true)
             }
@@ -142,6 +145,7 @@ struct FolderView: View {
 
 struct FileDropDelegate: DropDelegate {
     
+    let filesList: [FileItem]
     let folderName: String
     let afterUpload: () -> Void
     
@@ -153,10 +157,17 @@ struct FileDropDelegate: DropDelegate {
         let items = info.itemProviders(for: [.fileURL])
         for item in items {
             _ = item.loadObject(ofClass: URL.self) { url, _ in
-                print(url)
-                GoogleDriveService().uploadFile(fileUrl: url!, folderID: folderName) { result in
-                    print(result)
-                    afterUpload()
+                let updateFile = filesList.first { $0.name == url!.lastPathComponent }
+                if let updateFile = updateFile {
+                    GoogleDriveService().updateFile(fileUrl: url!, fileID: updateFile.id) { result in
+                        print(result)
+                        afterUpload()
+                    }
+                } else {
+                    GoogleDriveService().uploadFile(fileUrl: url!, folderID: folderName) { result in
+                        print(result)
+                        afterUpload()
+                    }
                 }
             }
         }

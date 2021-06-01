@@ -15,6 +15,9 @@ struct shared_diskApp: App {
                 .if(.macOS) { view in
                     view.frame(width: 800, height: 700)
                 }
+                .onAppear {
+                    print(UserStorage.myToken)
+                }
         }
     }
 }
