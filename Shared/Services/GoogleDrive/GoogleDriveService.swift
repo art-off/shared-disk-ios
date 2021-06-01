@@ -129,6 +129,18 @@ class GoogleDriveService {
         )
     }
     
+    func donwloadFile(name: String, fileID: String, mimeType: String, completion: @escaping (Result<Bool, AppError>) -> Void) {
+        googleService.downloadFile(
+            name: name,
+            path: "/drive/v3/files/\(fileID)",
+            queryParams: ["alt": "media"],
+            token: UserStorage.googleToken,
+            completion: { result in
+                print(result)
+            }
+        )
+    }
+    
     private func dataAndBoundaryForUploadFile(fileUrl: URL, folderID: String) -> (Data, String) {
         let boundary = UUID().uuidString
         
@@ -162,6 +174,4 @@ class GoogleDriveService {
         
         return (data, boundary)
     }
-    
-//    private func dataAndBounda
 }

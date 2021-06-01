@@ -78,6 +78,11 @@ struct FolderView: View {
                                         updateFiles()
                                     }
                                 }
+                                Button("Скачать") {
+                                    GoogleDriveService().donwloadFile(name: file.name, fileID: file.id, mimeType: file.mineType.stringType) { result in
+                                        // mne vse ravno ya pank
+                                    }
+                                }
                             }))
     //                        .onDrag { NSItemProvider(object: URL(string: "https://apple.com")! as NSURL) }
                         }
@@ -92,7 +97,6 @@ struct FolderView: View {
             .contextMenu(ContextMenu(menuItems: {
                 Button("Создать папку") {
                     actionOnSheet = { name in
-                        print(name)
                         GoogleDriveService().createFile(
                             name: name,
                             mimeType: .folder,

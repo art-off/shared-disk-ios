@@ -18,6 +18,33 @@ class BaseAPIService {
         baseApi = BaseAPI(stringAddress: stringAddress)
     }
     
+    func downloadFile(name: String,
+                      path: String,
+                      queryParams: [String: String]? = nil,
+                      token: String? = nil,
+                      completion: @escaping (Result<Bool, AppError>) -> Void) {
+        
+        let request = getRequest(path: path, method: .get, token: token, queryParams: queryParams, json: nil, headers: nil)
+        
+        let downloadsDirectoryUrl = createDownloadsFolderIfNeeded()
+        
+        session.downloadTask(with: request) { tmpLocalUrl, response, error in
+            guard
+                error == nil,
+                let tmpLocalUrl = tmpLocalUrl
+            else {
+                completion(.failure(.unowned))
+                return
+            }
+            
+            try! FileManager.default.copyItem(
+                at: tmpLocalUrl,
+                to: downloadsDirectoryUrl.appendingPathComponent(name)
+            )
+            completion(.success(true))
+        }.resume()
+    }
+    
     /// Запускает сетевой запрос
     ///
     /// - parameters:
@@ -35,19 +62,7 @@ class BaseAPIService {
                             headers: [String: String]? = nil,
                             completion: @escaping (Result<T, AppError>) -> Void) {
         
-        let request: URLRequest
-        if let token = token {
-            request = baseApi.requestWithBearerToken(
-                method,
-                token: token,
-                path: path,
-                queryParams: queryParams,
-                json: json,
-                headers: headers
-            )
-        } else {
-            request = baseApi.request(method, path: path, queryParams: queryParams, json: json, headers: headers)
-        }
+        let request = getRequest(path: path, method: method, token: token, queryParams: queryParams, json: json, headers: headers)
 
         task = session.dataTask(with: request) { data, response, error in
             let handleResult = self.handleResponse(T.self, data, response, error)
@@ -89,4 +104,37 @@ class BaseAPIService {
         return .failure(.unowned)
     }
     
+    private func getRequest(path: String,
+                            method: BaseAPI.HTTPMethod,
+                            token: String?,
+                            queryParams: [String: String]?,
+                            json: BaseAPI.JSONType?,
+                            headers: [String: String]?) -> URLRequest {
+        let request: URLRequest
+        if let token = token {
+            request = baseApi.requestWithBearerToken(
+                method,
+                token: token,
+                path: path,
+                queryParams: queryParams,
+                json: json,
+                headers: headers
+            )
+        } else {
+            request = baseApi.request(method, path: path, queryParams: queryParams, json: json, headers: headers)
+        }
+        return request
+    }
+    
+    private func createDownloadsFolderIfNeeded() -> URL {
+        let fileManager = FileManager.default
+        let downloadsDirectoryUrl = try! fileManager.url(for: .downloadsDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            .appendingPathComponent("shared-disk")
+        
+        if !fileManager.fileExists(atPath: downloadsDirectoryUrl.path) {
+            try! fileManager.createDirectory(at: downloadsDirectoryUrl, withIntermediateDirectories: true, attributes: nil)
+        }
+        
+        return downloadsDirectoryUrl
+    }
 }
