@@ -14,7 +14,8 @@ struct FolderView: View {
     @State var selectedFileID = ""
     
     @State var actionOnSheet: (String) -> Void = { _ in }
-    @State var presentSheet = false
+    @State var presentCreateFolderSheet = false
+    @State var presentShowInfoSheet = false
     
     @State var files: [FileItem] = []
     
@@ -69,6 +70,7 @@ struct FolderView: View {
                                         updateFiles(folder: (file.name, file.id))
                                     } else {
                                         // TODO: Сделать открытие инфв о файле (сколько занимает и изменения файлов)
+                                        presentShowInfoSheet = true
                                     }
                                 } else {
                                     selectedFileID = file.id
@@ -110,12 +112,15 @@ struct FolderView: View {
                             }
                         )
                     }
-                    presentSheet = true
+                    presentCreateFolderSheet = true
                 }
             }))
         }
-        .sheet(isPresented: $presentSheet) {
+        .sheet(isPresented: $presentCreateFolderSheet) {
             SheetView(action: $actionOnSheet)
+        }
+        .sheet(isPresented: $presentShowInfoSheet) {
+            FileInfoSheetView(fileID: $selectedFileID)
         }
     }
     
@@ -200,6 +205,72 @@ struct SheetView: View {
         }
         .frame(width: 300)
         .padding()
+    }
+}
+
+struct FileInfoSheetView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
+    @Binding var fileID: String
+    
+    @State var revisionList: [FileRevision] = []
+    
+    let dateFormatter1: DateFormatter = {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return df
+    }()
+    
+    let dateFormatter2: DateFormatter = {
+        let df = DateFormatter()
+        df.dateFormat = "dd.MM.yy HH:mm"
+        return df
+    }()
+    
+    private func getStringDate(date: String) -> String {
+        let d = dateFormatter1.date(from: String(date.prefix(19)))!
+        return dateFormatter2.string(from: d)
+    }
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Text("Изменения файла")
+                Spacer()
+                Button("Закрыть") {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }
+            .padding()
+            List {
+                ForEach(revisionList) { revision in
+                    HStack {
+                        Text(revision.fileName).frame(width: 95)
+                        Divider()
+                        Text(revision.modifiedUser.displayName).frame(width: 95)
+                        Divider()
+                        Text(getStringDate(date: revision.modifiedTime)).frame(width: 95)
+                        Divider()
+                        Text(revision.size + " Б").frame(width: 95)
+                    }
+                    .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(10)
+                }
+            }
+        }
+        .frame(width: 500, height: 500)
+        .padding()
+        .onAppear {
+            GoogleDriveService().fileRevisions(fileID: fileID) { result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let revisions):
+                    revisionList = revisions
+                }
+            }
+        }
     }
 }
 

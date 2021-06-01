@@ -68,6 +68,10 @@
 		7C81DE892664EE640018F3D6 /* AuthUrlResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DE872664EE0B0018F3D6 /* AuthUrlResponse.swift */; };
 		7C81DE8E2664F0FA0018F3D6 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DE8D2664F0FA0018F3D6 /* TokenResponse.swift */; };
 		7C81DE8F2664F1150018F3D6 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DE8D2664F0FA0018F3D6 /* TokenResponse.swift */; };
+		7C81DEBD2666594D0018F3D6 /* FileRevision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEBC2666594D0018F3D6 /* FileRevision.swift */; };
+		7C81DEBE2666594D0018F3D6 /* FileRevision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEBC2666594D0018F3D6 /* FileRevision.swift */; };
+		7C81DEC026665B200018F3D6 /* FileRevisionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEBF26665B200018F3D6 /* FileRevisionResponse.swift */; };
+		7C81DEC126665B200018F3D6 /* FileRevisionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEBF26665B200018F3D6 /* FileRevisionResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +111,8 @@
 		7C81DE842664A8120018F3D6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		7C81DE872664EE0B0018F3D6 /* AuthUrlResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUrlResponse.swift; sourceTree = "<group>"; };
 		7C81DE8D2664F0FA0018F3D6 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
+		7C81DEBC2666594D0018F3D6 /* FileRevision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRevision.swift; sourceTree = "<group>"; };
+		7C81DEBF26665B200018F3D6 /* FileRevisionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRevisionResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +219,7 @@
 				7C753A1A265B81BF00711DE7 /* Responses */,
 				7C7539DF26590C0500711DE7 /* API */,
 				7C7539D82659015200711DE7 /* FileItem.swift */,
+				7C81DEBC2666594D0018F3D6 /* FileRevision.swift */,
 				7C2689402660ABE7000E68CA /* AppError.swift */,
 			);
 			path = Shared;
@@ -286,6 +293,7 @@
 				7C753A1D265B879000711DE7 /* ErrorResponse.swift */,
 				7C81DE872664EE0B0018F3D6 /* AuthUrlResponse.swift */,
 				7C81DE8D2664F0FA0018F3D6 /* TokenResponse.swift */,
+				7C81DEBF26665B200018F3D6 /* FileRevisionResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -444,6 +452,8 @@
 				7C81DE7E2663F8540018F3D6 /* MainNavigatoinView.swift in Sources */,
 				7C81DE882664EE0B0018F3D6 /* AuthUrlResponse.swift in Sources */,
 				7C7539FF265B622D00711DE7 /* RegistrationView.swift in Sources */,
+				7C81DEC026665B200018F3D6 /* FileRevisionResponse.swift in Sources */,
+				7C81DEBD2666594D0018F3D6 /* FileRevision.swift in Sources */,
 				7C7539C32658FFB200711DE7 /* shared_diskApp.swift in Sources */,
 				7C2689412660ABE7000E68CA /* AppError.swift in Sources */,
 				7C7539FA265B5B4000711DE7 /* UserStorage.swift in Sources */,
@@ -482,12 +492,14 @@
 				7C753A04265B63F700711DE7 /* FileItem.swift in Sources */,
 				7C753A00265B63E800711DE7 /* UserStorage.swift in Sources */,
 				7C753A06265B63FC00711DE7 /* MimeType.swift in Sources */,
+				7C81DEBE2666594D0018F3D6 /* FileRevision.swift in Sources */,
 				7C81DE892664EE640018F3D6 /* AuthUrlResponse.swift in Sources */,
 				7C753A01265B63EE00711DE7 /* URL+appendQueryItem.swift in Sources */,
 				7C81DE862664A8320018F3D6 /* ProfileView.swift in Sources */,
 				7C753A0D265B738900711DE7 /* AuthRouter.swift in Sources */,
 				7C753A02265B63F200711DE7 /* BaseAPI.swift in Sources */,
 				7C2689422660ABE8000E68CA /* AppError.swift in Sources */,
+				7C81DEC126665B200018F3D6 /* FileRevisionResponse.swift in Sources */,
 				7C26894C2660BDC1000E68CA /* Bool.swift in Sources */,
 				7C753A03265B63F400711DE7 /* BaseAPIService.swift in Sources */,
 				7C26893D2660A40D000E68CA /* UserResponse.swift in Sources */,

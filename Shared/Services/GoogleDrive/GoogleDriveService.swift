@@ -32,6 +32,24 @@ class GoogleDriveService {
         )
     }
     
+    func fileRevisions(fileID: String, completion: @escaping (Result<[FileRevision], AppError>) -> Void) {
+        googleService.load(
+            FileRevisionResponse.self,
+            method: .get,
+            path: "/drive/v3/files/\(fileID)/revisions",
+            token: UserStorage.googleToken,
+            queryParams: ["fields": "*"],
+            completion: { result in
+                switch result {
+                case .failure(let error):
+                    completion(.failure(error))
+                case .success(let response):
+                    completion(.success(response.revisions))
+                }
+            }
+        )
+    }
+    
     func refreshToken(completion: @escaping (Result<URL, AppError>) -> Void) {
         serverService.load(
             AuthUrlResponse.self,
