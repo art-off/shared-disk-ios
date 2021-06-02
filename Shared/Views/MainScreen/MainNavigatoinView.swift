@@ -20,6 +20,14 @@ struct MainNavigatoinView: View {
                 NavigationLink(destination: FolderView(folderHistory: [("root", "root")])) {
                     Text("Диск")
                 }
+                if UserStorage.isManager {
+                    NavigationLink(destination: StartProjectView()) {
+                        Text("Старт проекта")
+                    }
+                    NavigationLink(destination: Text("Проекты")) {
+                        Text("Проекты")
+                    }
+                }
             }
             .listStyle(SidebarListStyle())
         }

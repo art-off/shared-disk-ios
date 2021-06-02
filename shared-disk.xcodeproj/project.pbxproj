@@ -72,6 +72,20 @@
 		7C81DEBE2666594D0018F3D6 /* FileRevision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEBC2666594D0018F3D6 /* FileRevision.swift */; };
 		7C81DEC026665B200018F3D6 /* FileRevisionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEBF26665B200018F3D6 /* FileRevisionResponse.swift */; };
 		7C81DEC126665B200018F3D6 /* FileRevisionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEBF26665B200018F3D6 /* FileRevisionResponse.swift */; };
+		7C81DEC4266765340018F3D6 /* StartProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEC3266765340018F3D6 /* StartProjectView.swift */; };
+		7C81DEC5266765340018F3D6 /* StartProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEC3266765340018F3D6 /* StartProjectView.swift */; };
+		7C81DEC7266766120018F3D6 /* CustomerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEC6266766120018F3D6 /* CustomerResponse.swift */; };
+		7C81DEC8266766120018F3D6 /* CustomerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEC6266766120018F3D6 /* CustomerResponse.swift */; };
+		7C81DECA26676B840018F3D6 /* DevelopmentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEC926676B840018F3D6 /* DevelopmentTask.swift */; };
+		7C81DECB26676B840018F3D6 /* DevelopmentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEC926676B840018F3D6 /* DevelopmentTask.swift */; };
+		7C81DECD26676BBE0018F3D6 /* Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DECC26676BBE0018F3D6 /* Worker.swift */; };
+		7C81DECE26676BBE0018F3D6 /* Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DECC26676BBE0018F3D6 /* Worker.swift */; };
+		7C81DED0266772350018F3D6 /* WorkerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DECF266772350018F3D6 /* WorkerResponse.swift */; };
+		7C81DED1266772350018F3D6 /* WorkerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DECF266772350018F3D6 /* WorkerResponse.swift */; };
+		7C81DED42667A54A0018F3D6 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DED32667A54A0018F3D6 /* Project.swift */; };
+		7C81DED52667A54A0018F3D6 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DED32667A54A0018F3D6 /* Project.swift */; };
+		7C81DED72667A5E90018F3D6 /* DevelopmentStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DED62667A5E90018F3D6 /* DevelopmentStage.swift */; };
+		7C81DED82667A5E90018F3D6 /* DevelopmentStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DED62667A5E90018F3D6 /* DevelopmentStage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +127,13 @@
 		7C81DE8D2664F0FA0018F3D6 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
 		7C81DEBC2666594D0018F3D6 /* FileRevision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRevision.swift; sourceTree = "<group>"; };
 		7C81DEBF26665B200018F3D6 /* FileRevisionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRevisionResponse.swift; sourceTree = "<group>"; };
+		7C81DEC3266765340018F3D6 /* StartProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartProjectView.swift; sourceTree = "<group>"; };
+		7C81DEC6266766120018F3D6 /* CustomerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerResponse.swift; sourceTree = "<group>"; };
+		7C81DEC926676B840018F3D6 /* DevelopmentTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentTask.swift; sourceTree = "<group>"; };
+		7C81DECC26676BBE0018F3D6 /* Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worker.swift; sourceTree = "<group>"; };
+		7C81DECF266772350018F3D6 /* WorkerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerResponse.swift; sourceTree = "<group>"; };
+		7C81DED32667A54A0018F3D6 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		7C81DED62667A5E90018F3D6 /* DevelopmentStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentStage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +176,7 @@
 		7C7539AF2658FFB100711DE7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				7C81DED22667A52F0018F3D6 /* Models */,
 				7C2689462660BD7A000E68CA /* Extensions */,
 				7C753A0C265B728300711DE7 /* Transition */,
 				7C7539F8265B5B3100711DE7 /* Storage */,
@@ -294,6 +316,8 @@
 				7C81DE872664EE0B0018F3D6 /* AuthUrlResponse.swift */,
 				7C81DE8D2664F0FA0018F3D6 /* TokenResponse.swift */,
 				7C81DEBF26665B200018F3D6 /* FileRevisionResponse.swift */,
+				7C81DEC6266766120018F3D6 /* CustomerResponse.swift */,
+				7C81DECF266772350018F3D6 /* WorkerResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -333,6 +357,7 @@
 				7C81DE832664A8030018F3D6 /* ProfileScreen */,
 				7C81DE7D2663F8540018F3D6 /* MainNavigatoinView.swift */,
 				7C81DE802663FC160018F3D6 /* FolderView.swift */,
+				7C81DEC3266765340018F3D6 /* StartProjectView.swift */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -343,6 +368,17 @@
 				7C81DE842664A8120018F3D6 /* ProfileView.swift */,
 			);
 			path = ProfileScreen;
+			sourceTree = "<group>";
+		};
+		7C81DED22667A52F0018F3D6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7C81DEC926676B840018F3D6 /* DevelopmentTask.swift */,
+				7C81DECC26676BBE0018F3D6 /* Worker.swift */,
+				7C81DED32667A54A0018F3D6 /* Project.swift */,
+				7C81DED62667A5E90018F3D6 /* DevelopmentStage.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,19 +484,26 @@
 				7C753A21265B8C6100711DE7 /* ActivityIndicator.swift in Sources */,
 				7C7539D92659015200711DE7 /* FileItem.swift in Sources */,
 				7C2689482660BD8D000E68CA /* View+if.swift in Sources */,
+				7C81DECA26676B840018F3D6 /* DevelopmentTask.swift in Sources */,
 				7C7539E326591AFA00711DE7 /* FilesResponse.swift in Sources */,
 				7C81DE7E2663F8540018F3D6 /* MainNavigatoinView.swift in Sources */,
 				7C81DE882664EE0B0018F3D6 /* AuthUrlResponse.swift in Sources */,
 				7C7539FF265B622D00711DE7 /* RegistrationView.swift in Sources */,
 				7C81DEC026665B200018F3D6 /* FileRevisionResponse.swift in Sources */,
 				7C81DEBD2666594D0018F3D6 /* FileRevision.swift in Sources */,
+				7C81DED42667A54A0018F3D6 /* Project.swift in Sources */,
 				7C7539C32658FFB200711DE7 /* shared_diskApp.swift in Sources */,
 				7C2689412660ABE7000E68CA /* AppError.swift in Sources */,
+				7C81DED72667A5E90018F3D6 /* DevelopmentStage.swift in Sources */,
 				7C7539FA265B5B4000711DE7 /* UserStorage.swift in Sources */,
+				7C81DED0266772350018F3D6 /* WorkerResponse.swift in Sources */,
 				7C81DE8E2664F0FA0018F3D6 /* TokenResponse.swift in Sources */,
 				7C2689442660B2BB000E68CA /* FirstRouter.swift in Sources */,
+				7C81DEC4266765340018F3D6 /* StartProjectView.swift in Sources */,
 				7C7539DC265907BF00711DE7 /* URL+appendQueryItem.swift in Sources */,
+				7C81DECD26676BBE0018F3D6 /* Worker.swift in Sources */,
 				7C7539D42659005500711DE7 /* MimeType.swift in Sources */,
+				7C81DEC7266766120018F3D6 /* CustomerResponse.swift in Sources */,
 				7C753A0B265B6BE200711DE7 /* AuthRouter.swift in Sources */,
 				7C7539E126590C6900711DE7 /* BaseAPIService.swift in Sources */,
 				7C81DE812663FC160018F3D6 /* FolderView.swift in Sources */,
@@ -481,13 +524,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C753A05265B63F900711DE7 /* FilesResponse.swift in Sources */,
+				7C81DECE26676BBE0018F3D6 /* Worker.swift in Sources */,
 				7C7539C42658FFB200711DE7 /* shared_diskApp.swift in Sources */,
 				7C26893C2660A3D2000E68CA /* MyAPIService.swift in Sources */,
 				7C753A11265B77E400711DE7 /* TextField.swift in Sources */,
+				7C81DECB26676B840018F3D6 /* DevelopmentTask.swift in Sources */,
 				7C81DE8F2664F1150018F3D6 /* TokenResponse.swift in Sources */,
 				7C2689452660B2BB000E68CA /* FirstRouter.swift in Sources */,
 				7C81DE7F2663F8540018F3D6 /* MainNavigatoinView.swift in Sources */,
 				7C2689392660A1A4000E68CA /* LoadingView.swift in Sources */,
+				7C81DEC5266765340018F3D6 /* StartProjectView.swift in Sources */,
+				7C81DED1266772350018F3D6 /* WorkerResponse.swift in Sources */,
+				7C81DED82667A5E90018F3D6 /* DevelopmentStage.swift in Sources */,
 				7C753A09265B640F00711DE7 /* RegistrationView.swift in Sources */,
 				7C753A04265B63F700711DE7 /* FileItem.swift in Sources */,
 				7C753A00265B63E800711DE7 /* UserStorage.swift in Sources */,
@@ -501,6 +549,7 @@
 				7C2689422660ABE8000E68CA /* AppError.swift in Sources */,
 				7C81DEC126665B200018F3D6 /* FileRevisionResponse.swift in Sources */,
 				7C26894C2660BDC1000E68CA /* Bool.swift in Sources */,
+				7C81DED52667A54A0018F3D6 /* Project.swift in Sources */,
 				7C753A03265B63F400711DE7 /* BaseAPIService.swift in Sources */,
 				7C26893D2660A40D000E68CA /* UserResponse.swift in Sources */,
 				7C26893E2660A410000E68CA /* StatusReponse.swift in Sources */,
@@ -509,6 +558,7 @@
 				7C81DE822663FC160018F3D6 /* FolderView.swift in Sources */,
 				7C2689382660A1A0000E68CA /* AlertingView.swift in Sources */,
 				7C2689492660BD8D000E68CA /* View+if.swift in Sources */,
+				7C81DEC8266766120018F3D6 /* CustomerResponse.swift in Sources */,
 				7C26893F2660A412000E68CA /* ErrorResponse.swift in Sources */,
 				7C26893B2660A3B5000E68CA /* ActivityIndicator.swift in Sources */,
 				7C753A07265B63FE00711DE7 /* GoogleDriveService.swift in Sources */,

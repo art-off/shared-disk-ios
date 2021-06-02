@@ -24,6 +24,10 @@ struct FolderView: View {
     @State var showAlert = false
     @State var alertText = ""
     
+    
+    @State var workers: [Worker] = []
+    
+    
     var body: some View {
         AlertingView(isShowing: $showAlert, alertText: $alertText) {
             ScrollView {
@@ -89,6 +93,13 @@ struct FolderView: View {
                                         // mne vse ravno ya pank
                                     }
                                 }
+                                ForEach(workers) { worker in
+                                    Button("- Дать доступ работнику '" + worker.name + "'") {
+                                        GoogleDriveService().givePermission(fileID: file.id, userEmail: worker.email) { result in
+                                            print(result)
+                                        }
+                                    }
+                                }
                             }))
                         }
                     }
@@ -98,6 +109,10 @@ struct FolderView: View {
             .onDrop(of: [.fileURL], delegate: FileDropDelegate(filesList: files, folderName: folderHistory.last!.id, afterUpload: updateFiles))
             .onAppear {
                 updateFiles(folder: folderHistory.last!, notAddnotRemove: true)
+                MyAPIServic().getWorkers(completion: { workers in
+                    guard let w = workers else { return }
+                    self.workers = w
+                })
             }
             .contextMenu(ContextMenu(menuItems: {
                 Button("Создать папку") {

@@ -12,4 +12,5 @@ class UserResponse: Decodable {
     let name: String
     let email: String
     let token: String
+    let is_manager: Bool
 }

@@ -187,6 +187,27 @@ class GoogleDriveService {
         )
     }
     
+    func givePermission(fileID: String, userEmail: String, completion: @escaping (Result<Bool, AppError>) -> Void) {
+        serverService.load(
+            FileItem.self,
+            method: .post,
+            path: "/permission",
+            token: UserStorage.myToken,
+            json: .dict([
+                "file_id": fileID,
+                "user_email": userEmail,
+            ]),
+            completion: { result in
+                switch result {
+                case .failure(let error):
+                    completion(.failure(error))
+                case .success(_):
+                    completion(.success(true))
+                }
+            }
+        )
+    }
+    
     private func dataAndBoundaryForUploadFile(fileUrl: URL, folderID: String? = nil) -> (Data, String) {
         let boundary = UUID().uuidString
         
