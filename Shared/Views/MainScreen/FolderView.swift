@@ -93,10 +93,12 @@ struct FolderView: View {
                                         // mne vse ravno ya pank
                                     }
                                 }
-                                ForEach(workers) { worker in
-                                    Button("- Дать доступ работнику '" + worker.name + "'") {
-                                        GoogleDriveService().givePermission(fileID: file.id, userEmail: worker.email) { result in
-                                            print(result)
+                                if UserStorage.isManager {
+                                    ForEach(workers) { worker in
+                                        Button("- Дать доступ работнику '" + worker.name + "'") {
+                                            GoogleDriveService().givePermission(fileID: file.id, userEmail: worker.email) { result in
+                                                print(result)
+                                            }
                                         }
                                     }
                                 }

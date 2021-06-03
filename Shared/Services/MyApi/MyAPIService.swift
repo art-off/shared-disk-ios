@@ -46,6 +46,7 @@ class MyAPIServic {
                 case .failure(_):
                     completion(false)
                 case .success(let userResponse):
+                    UserStorage.id = userResponse.id
                     UserStorage.myToken = userResponse.token
                     UserStorage.email = userResponse.email
                     UserStorage.login = userResponse.name
@@ -125,6 +126,23 @@ class MyAPIServic {
                     completion(.failure(error))
                 case .success(_):
                     completion(.success(true))
+                }
+            }
+        )
+    }
+    
+    func getProjects(completion: @escaping (Result<[ProjectResponse], AppError>) -> Void) {
+        serverService.load(
+            ProjectsResponse.self,
+            method: .get,
+            path: "/project/get",
+            token: UserStorage.myToken,
+            completion: { result in
+                switch result {
+                case .failure(let e):
+                    completion(.failure(e))
+                case .success(let r):
+                    completion(.success(r.projects))
                 }
             }
         )

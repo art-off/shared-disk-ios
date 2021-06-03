@@ -9,6 +9,7 @@ import Foundation
 
 class UserResponse: Decodable {
     
+    let id: Int
     let name: String
     let email: String
     let token: String

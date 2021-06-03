@@ -24,9 +24,9 @@ struct MainNavigatoinView: View {
                     NavigationLink(destination: StartProjectView()) {
                         Text("Старт проекта")
                     }
-                    NavigationLink(destination: Text("Проекты")) {
-                        Text("Проекты")
-                    }
+                }
+                NavigationLink(destination: ProjectsRouter()) {
+                    Text("Проекты")
                 }
             }
             .listStyle(SidebarListStyle())

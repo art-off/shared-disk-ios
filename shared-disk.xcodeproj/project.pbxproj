@@ -86,6 +86,20 @@
 		7C81DED52667A54A0018F3D6 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DED32667A54A0018F3D6 /* Project.swift */; };
 		7C81DED72667A5E90018F3D6 /* DevelopmentStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DED62667A5E90018F3D6 /* DevelopmentStage.swift */; };
 		7C81DED82667A5E90018F3D6 /* DevelopmentStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DED62667A5E90018F3D6 /* DevelopmentStage.swift */; };
+		7C81DEDB2668CBE70018F3D6 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEDA2668CBE70018F3D6 /* Manager.swift */; };
+		7C81DEDD2668CC260018F3D6 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEDC2668CC260018F3D6 /* Customer.swift */; };
+		7C81DEDF2668CC6C0018F3D6 /* ProjectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEDE2668CC6C0018F3D6 /* ProjectResponse.swift */; };
+		7C81DEE02668CD000018F3D6 /* ProjectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEDE2668CC6C0018F3D6 /* ProjectResponse.swift */; };
+		7C81DEE12668CD020018F3D6 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEDC2668CC260018F3D6 /* Customer.swift */; };
+		7C81DEE22668CD040018F3D6 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEDA2668CBE70018F3D6 /* Manager.swift */; };
+		7C81DEE42668CDAD0018F3D6 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEE32668CDAD0018F3D6 /* ProjectsView.swift */; };
+		7C81DEE52668CDB80018F3D6 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEE32668CDAD0018F3D6 /* ProjectsView.swift */; };
+		7C81DEE72668CE8E0018F3D6 /* ProjectsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEE62668CE8E0018F3D6 /* ProjectsResponse.swift */; };
+		7C81DEE82668CEAC0018F3D6 /* ProjectsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEE62668CE8E0018F3D6 /* ProjectsResponse.swift */; };
+		7C81DEEB2668D1320018F3D6 /* ProjectsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEEA2668D1320018F3D6 /* ProjectsRouter.swift */; };
+		7C81DEEC2668D2660018F3D6 /* ProjectsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEEA2668D1320018F3D6 /* ProjectsRouter.swift */; };
+		7C81DEEE2668DF150018F3D6 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEED2668DF150018F3D6 /* TasksView.swift */; };
+		7C81DEEF2668DF570018F3D6 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEED2668DF150018F3D6 /* TasksView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +148,13 @@
 		7C81DECF266772350018F3D6 /* WorkerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerResponse.swift; sourceTree = "<group>"; };
 		7C81DED32667A54A0018F3D6 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		7C81DED62667A5E90018F3D6 /* DevelopmentStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentStage.swift; sourceTree = "<group>"; };
+		7C81DEDA2668CBE70018F3D6 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		7C81DEDC2668CC260018F3D6 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
+		7C81DEDE2668CC6C0018F3D6 /* ProjectResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectResponse.swift; sourceTree = "<group>"; };
+		7C81DEE32668CDAD0018F3D6 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
+		7C81DEE62668CE8E0018F3D6 /* ProjectsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsResponse.swift; sourceTree = "<group>"; };
+		7C81DEEA2668D1320018F3D6 /* ProjectsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsRouter.swift; sourceTree = "<group>"; };
+		7C81DEED2668DF150018F3D6 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +197,7 @@
 		7C7539AF2658FFB100711DE7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				7C81DED92668CBDD0018F3D6 /* Responses */,
 				7C81DED22667A52F0018F3D6 /* Models */,
 				7C2689462660BD7A000E68CA /* Extensions */,
 				7C753A0C265B728300711DE7 /* Transition */,
@@ -357,6 +379,7 @@
 				7C81DE832664A8030018F3D6 /* ProfileScreen */,
 				7C81DE7D2663F8540018F3D6 /* MainNavigatoinView.swift */,
 				7C81DE802663FC160018F3D6 /* FolderView.swift */,
+				7C81DEE92668D10E0018F3D6 /* ProjectsScreen */,
 				7C81DEC3266765340018F3D6 /* StartProjectView.swift */,
 			);
 			path = MainScreen;
@@ -379,6 +402,27 @@
 				7C81DED62667A5E90018F3D6 /* DevelopmentStage.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		7C81DED92668CBDD0018F3D6 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				7C81DEDA2668CBE70018F3D6 /* Manager.swift */,
+				7C81DEDC2668CC260018F3D6 /* Customer.swift */,
+				7C81DEDE2668CC6C0018F3D6 /* ProjectResponse.swift */,
+				7C81DEE62668CE8E0018F3D6 /* ProjectsResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		7C81DEE92668D10E0018F3D6 /* ProjectsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7C81DEE32668CDAD0018F3D6 /* ProjectsView.swift */,
+				7C81DEEA2668D1320018F3D6 /* ProjectsRouter.swift */,
+				7C81DEED2668DF150018F3D6 /* TasksView.swift */,
+			);
+			path = ProjectsScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -485,15 +529,21 @@
 				7C7539D92659015200711DE7 /* FileItem.swift in Sources */,
 				7C2689482660BD8D000E68CA /* View+if.swift in Sources */,
 				7C81DECA26676B840018F3D6 /* DevelopmentTask.swift in Sources */,
+				7C81DEDB2668CBE70018F3D6 /* Manager.swift in Sources */,
+				7C81DEE72668CE8E0018F3D6 /* ProjectsResponse.swift in Sources */,
 				7C7539E326591AFA00711DE7 /* FilesResponse.swift in Sources */,
 				7C81DE7E2663F8540018F3D6 /* MainNavigatoinView.swift in Sources */,
 				7C81DE882664EE0B0018F3D6 /* AuthUrlResponse.swift in Sources */,
+				7C81DEDD2668CC260018F3D6 /* Customer.swift in Sources */,
 				7C7539FF265B622D00711DE7 /* RegistrationView.swift in Sources */,
 				7C81DEC026665B200018F3D6 /* FileRevisionResponse.swift in Sources */,
 				7C81DEBD2666594D0018F3D6 /* FileRevision.swift in Sources */,
 				7C81DED42667A54A0018F3D6 /* Project.swift in Sources */,
 				7C7539C32658FFB200711DE7 /* shared_diskApp.swift in Sources */,
 				7C2689412660ABE7000E68CA /* AppError.swift in Sources */,
+				7C81DEEE2668DF150018F3D6 /* TasksView.swift in Sources */,
+				7C81DEE42668CDAD0018F3D6 /* ProjectsView.swift in Sources */,
+				7C81DEDF2668CC6C0018F3D6 /* ProjectResponse.swift in Sources */,
 				7C81DED72667A5E90018F3D6 /* DevelopmentStage.swift in Sources */,
 				7C7539FA265B5B4000711DE7 /* UserStorage.swift in Sources */,
 				7C81DED0266772350018F3D6 /* WorkerResponse.swift in Sources */,
@@ -511,6 +561,7 @@
 				7C7539D6265900B100711DE7 /* GoogleDriveService.swift in Sources */,
 				7C26894B2660BDC1000E68CA /* Bool.swift in Sources */,
 				7C7539FC265B5CA500711DE7 /* AuthView.swift in Sources */,
+				7C81DEEB2668D1320018F3D6 /* ProjectsRouter.swift in Sources */,
 				7C753A19265B809400711DE7 /* UserResponse.swift in Sources */,
 				7C753A28265B929600711DE7 /* AlertingView.swift in Sources */,
 				7C753A1E265B879000711DE7 /* ErrorResponse.swift in Sources */,
@@ -537,6 +588,7 @@
 				7C81DED1266772350018F3D6 /* WorkerResponse.swift in Sources */,
 				7C81DED82667A5E90018F3D6 /* DevelopmentStage.swift in Sources */,
 				7C753A09265B640F00711DE7 /* RegistrationView.swift in Sources */,
+				7C81DEE02668CD000018F3D6 /* ProjectResponse.swift in Sources */,
 				7C753A04265B63F700711DE7 /* FileItem.swift in Sources */,
 				7C753A00265B63E800711DE7 /* UserStorage.swift in Sources */,
 				7C753A06265B63FC00711DE7 /* MimeType.swift in Sources */,
@@ -544,8 +596,14 @@
 				7C81DE892664EE640018F3D6 /* AuthUrlResponse.swift in Sources */,
 				7C753A01265B63EE00711DE7 /* URL+appendQueryItem.swift in Sources */,
 				7C81DE862664A8320018F3D6 /* ProfileView.swift in Sources */,
+				7C81DEE82668CEAC0018F3D6 /* ProjectsResponse.swift in Sources */,
 				7C753A0D265B738900711DE7 /* AuthRouter.swift in Sources */,
+				7C81DEE52668CDB80018F3D6 /* ProjectsView.swift in Sources */,
+				7C81DEEF2668DF570018F3D6 /* TasksView.swift in Sources */,
 				7C753A02265B63F200711DE7 /* BaseAPI.swift in Sources */,
+				7C81DEEC2668D2660018F3D6 /* ProjectsRouter.swift in Sources */,
+				7C81DEE12668CD020018F3D6 /* Customer.swift in Sources */,
+				7C81DEE22668CD040018F3D6 /* Manager.swift in Sources */,
 				7C2689422660ABE8000E68CA /* AppError.swift in Sources */,
 				7C81DEC126665B200018F3D6 /* FileRevisionResponse.swift in Sources */,
 				7C26894C2660BDC1000E68CA /* Bool.swift in Sources */,
