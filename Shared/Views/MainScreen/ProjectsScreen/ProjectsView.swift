@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProjectsView: View {
     
-    let goToFolder: (String, String) -> Void
+    let goToFolder: (String, String, Int?) -> Void
     let goToTask: ([TaskResponse]) -> Void
     
     @State var projects: [ProjectResponse] = []
@@ -28,7 +28,7 @@ struct ProjectsView: View {
                 .onTapGesture {
                     print(UserStorage.isManager)
                     if UserStorage.isManager {
-                        goToFolder(project.folder_id, project.name)
+                        goToFolder(project.folder_id, project.name, nil)
                     } else {
                         
                         let tasks = project.stages.flatMap {
@@ -60,6 +60,6 @@ struct ProjectsView: View {
 
 struct ProjectsView_Previews: PreviewProvider {
     static var previews: some View {
-        ProjectsView(goToFolder: { _, _ in }, goToTask: { _ in })
+        ProjectsView(goToFolder: { _, _, _  in }, goToTask: { _ in })
     }
 }

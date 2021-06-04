@@ -17,7 +17,7 @@ struct MainNavigatoinView: View {
                 NavigationLink(destination: ProfileView(goToAuthScreens: goToAuthScreens)) {
                     Text("Аккаунт")
                 }
-                NavigationLink(destination: FolderView(folderHistory: [("root", "root")])) {
+                NavigationLink(destination: FolderView(taskId: nil, folderHistory: [("root", "root")])) {
                     Text("Диск")
                 }
                 if UserStorage.isManager {

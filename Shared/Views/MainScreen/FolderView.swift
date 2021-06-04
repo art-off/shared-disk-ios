@@ -9,13 +9,30 @@ import SwiftUI
 
 typealias Folder = (name: String, id: String)
 
+enum ActiveSheet: Identifiable {
+    case createFodler((String) -> Void),
+         fileInfo(String)
+    
+    var id: Int {
+        switch self {
+        case .createFodler(_):
+            return 1
+        case .fileInfo(_):
+            return 2
+        }
+    }
+}
+
 struct FolderView: View {
+    
+    let taskId: Int?
     
     @State var selectedFileID = ""
     
-    @State var actionOnSheet: (String) -> Void = { _ in }
-    @State var presentCreateFolderSheet = false
-    @State var presentShowInfoSheet = false
+//    @State var actionOnSheet: (String) -> Void = { _ in }
+    @State var activeSheet: ActiveSheet?
+//    @State var presentCreateFolderSheet = false
+//    @State var presentShowInfoSheet = false
     
     @State var files: [FileItem] = []
     
@@ -74,7 +91,8 @@ struct FolderView: View {
                                         updateFiles(folder: (file.name, file.id))
                                     } else {
                                         // TODO: Сделать открытие инфв о файле (сколько занимает и изменения файлов)
-                                        presentShowInfoSheet = true
+//                                        presentShowInfoSheet = true
+                                        activeSheet = .fileInfo(selectedFileID)
                                     }
                                 } else {
                                     selectedFileID = file.id
@@ -108,8 +126,9 @@ struct FolderView: View {
                     .padding()
                 }
             }
-            .onDrop(of: [.fileURL], delegate: FileDropDelegate(filesList: files, folderName: folderHistory.last!.id, afterUpload: updateFiles))
+            .onDrop(of: [.fileURL], delegate: FileDropDelegate(taskId: taskId, filesList: files, folderName: folderHistory.last!.id, afterUpload: updateFiles))
             .onAppear {
+                print("TASK ID", taskId)
                 updateFiles(folder: folderHistory.last!, notAddnotRemove: true)
                 MyAPIServic().getWorkers(completion: { workers in
                     guard let w = workers else { return }
@@ -118,8 +137,21 @@ struct FolderView: View {
             }
             .contextMenu(ContextMenu(menuItems: {
                 Button("Создать папку") {
-                    actionOnSheet = { name in
+//                    actionOnSheet = { name in
+//                        GoogleDriveService().createFile(
+//                            taskId: taskId,
+//                            name: name,
+//                            mimeType: .folder,
+//                            folderID: folderHistory.last!.id,
+//                            completion: { result in
+//                                print(result)
+//                                updateFiles()
+//                            }
+//                        )
+//                    }
+                    activeSheet = .createFodler({ name in
                         GoogleDriveService().createFile(
+                            taskId: taskId,
                             name: name,
                             mimeType: .folder,
                             folderID: folderHistory.last!.id,
@@ -128,17 +160,24 @@ struct FolderView: View {
                                 updateFiles()
                             }
                         )
-                    }
-                    presentCreateFolderSheet = true
+                    })
                 }
             }))
         }
-        .sheet(isPresented: $presentCreateFolderSheet) {
-            SheetView(action: $actionOnSheet)
+        .sheet(item: $activeSheet) { item in
+            switch item {
+            case .createFodler(let a):
+                SheetView(action: a)
+            case .fileInfo(let a):
+                FileInfoSheetView(fileID: a)
+            }
         }
-        .sheet(isPresented: $presentShowInfoSheet) {
-            FileInfoSheetView(fileID: $selectedFileID)
-        }
+//        .sheet(isPresented: $activeSheet) {
+//            FileInfoSheetView(fileID: $selectedFileID)
+//        }
+//        .sheet(isPresented: $activeSheet) {
+//            SheetView(action: $actionOnSheet)
+//        }
     }
     
     private func updateFiles() {
@@ -147,7 +186,7 @@ struct FolderView: View {
     
     private func updateFiles(folder: Folder, back: Bool = false, notAddnotRemove: Bool = false) {
         print("FINE1")
-        GoogleDriveService().files(in: folder.id) { result in
+        GoogleDriveService().files(taskId: taskId, folderName: folder.name, in: folder.id) { result in
             switch result {
             case .failure(let error):
                 alertText = error.description
@@ -167,6 +206,7 @@ struct FolderView: View {
 
 struct FileDropDelegate: DropDelegate {
     
+    let taskId: Int?
     let filesList: [FileItem]
     let folderName: String
     let afterUpload: () -> Void
@@ -181,12 +221,12 @@ struct FileDropDelegate: DropDelegate {
             _ = item.loadObject(ofClass: URL.self) { url, _ in
                 let updateFile = filesList.first { $0.name == url!.lastPathComponent }
                 if let updateFile = updateFile {
-                    GoogleDriveService().updateFile(fileUrl: url!, fileID: updateFile.id) { result in
+                    GoogleDriveService().updateFile(taskId: taskId, fileUrl: url!, fileID: updateFile.id) { result in
                         print(result)
                         afterUpload()
                     }
                 } else {
-                    GoogleDriveService().uploadFile(fileUrl: url!, folderID: folderName) { result in
+                    GoogleDriveService().uploadFile(taskId: taskId, fileUrl: url!, folderID: folderName) { result in
                         print(result)
                         afterUpload()
                     }
@@ -203,7 +243,7 @@ struct FileDropDelegate: DropDelegate {
 struct SheetView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @Binding var action: (String) -> Void
+    var action: (String) -> Void
     @State var name = ""
 
     var body: some View {
@@ -228,7 +268,7 @@ struct SheetView: View {
 struct FileInfoSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @Binding var fileID: String
+    var fileID: String
     
     @State var revisionList: [FileRevision] = []
     
@@ -294,6 +334,6 @@ struct FileInfoSheetView: View {
 
 struct FolderView_Previews: PreviewProvider {
     static var previews: some View {
-        FolderView(folderHistory: [("name", "root")])
+        FolderView(taskId: nil, folderHistory: [("name", "root")])
     }
 }

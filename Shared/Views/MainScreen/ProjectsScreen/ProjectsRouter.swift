@@ -14,17 +14,17 @@ struct ProjectsRouter: View {
     enum Screen {
         case projects,
              tasks([TaskResponse]),
-             folder(String, String)
+             folder(String, String, Int?)
     }
     
     var body: some View {
         switch currScreen {
         case .projects:
-            AnyView(ProjectsView(goToFolder: goToFolder(folderId:folderName:), goToTask: goToTasks(_:)))
+            AnyView(ProjectsView(goToFolder: goToFolder(folderId:folderName:taskId:), goToTask: goToTasks(_:)))
         case .tasks(let tasks):
-            AnyView(TasksView(goToFolder: goToFolder(folderId:folderName:), tasks: tasks))
-        case .folder(let (i, n)):
-            AnyView(FolderView(folderHistory: [(n, i)]))
+            AnyView(TasksView(goToFolder: goToFolder(folderId:folderName:taskId:), tasks: tasks))
+        case .folder(let (i, n, task_id)):
+            AnyView(FolderView(taskId: task_id, folderHistory: [(n, i)]))
         }
     }
     
@@ -34,9 +34,9 @@ struct ProjectsRouter: View {
         }
     }
     
-    func goToFolder(folderId: String, folderName: String) {
+    func goToFolder(folderId: String, folderName: String, taskId: Int?) {
         withAnimation {
-            currScreen = .folder(folderId, folderName)
+            currScreen = .folder(folderId, folderName, taskId)
         }
     }
     

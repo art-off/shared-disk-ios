@@ -14,7 +14,7 @@ class GoogleDriveService {
     private let googleService = BaseAPIService(stringAddress: "https://www.googleapis.com")
     
     
-    func files(in folder: String = "root", completion: @escaping (Result<[FileItem], AppError>) -> Void) {
+    func files(taskId: Int?, folderName: String, in folder: String = "root", completion: @escaping (Result<[FileItem], AppError>) -> Void) {
         serverService.load(
             FilesResponse.self,
             method: .get,
@@ -22,6 +22,14 @@ class GoogleDriveService {
             token: UserStorage.myToken,
             queryParams: ["folder": folder],
             completion: { fileResponseResult in
+                if let t = taskId {
+                    print("protocolVisitFolder start")
+                    MyAPIServic().protocolVisitFolder(
+                        taskId: t,
+                        folderName: folderName,
+                        completion: { _ in }
+                    )
+                }
                 switch fileResponseResult {
                 case .failure(let error):
                     completion(.failure(error))
@@ -85,10 +93,10 @@ class GoogleDriveService {
         )
     }
     
-    func createFile(name: String, mimeType: MimeType, folderID: String, completion: @escaping (Result<Bool, AppError>) -> Void) {
+    func createFile(taskId: Int?, name: String, mimeType: MimeType, folderID: String, completion: @escaping (Result<Bool, AppError>) -> Void) {
         googleService.load(
             FileItem.self,
-            method: .put,
+            method: .post,
             path: "/drive/v3/files",
             token: UserStorage.googleToken,
             json: .dict([
@@ -97,6 +105,16 @@ class GoogleDriveService {
                 "parents": [folderID],
             ]),
             completion: { result in
+                if let t = taskId {
+                    print("protocolCreateEditFileFolder start")
+                    MyAPIServic().protocolCreateEditFileFolder(
+                        taskId: t,
+                        fileName: name,
+                        createOrEdit: 0,
+                        folderOrFile: mimeType == .folder ? 0 : 1,
+                        completion: { _ in }
+                    )
+                }
                 switch result {
                 case .failure(let error):
                     completion(.failure(error))
@@ -119,7 +137,7 @@ class GoogleDriveService {
         )
     }
     
-    func uploadFile(fileUrl: URL, folderID: String, completion: @escaping (Result<Bool, AppError>) -> Void) {
+    func uploadFile(taskId: Int?, fileUrl: URL, folderID: String, completion: @escaping (Result<Bool, AppError>) -> Void) {
         let (data, boundary) = dataAndBoundaryForUploadFile(fileUrl: fileUrl, folderID: folderID)
         
         googleService.load(
@@ -137,6 +155,16 @@ class GoogleDriveService {
                 "Content-Length": "\(data.count)",
             ],
             completion: { result in
+                if let t = taskId {
+                    print("protocolCreateEditFileFolder start")
+                    MyAPIServic().protocolCreateEditFileFolder(
+                        taskId: t,
+                        fileName: fileUrl.lastPathComponent,
+                        createOrEdit: 0,
+                        folderOrFile: 1,
+                        completion: { _ in }
+                    )
+                }
                 switch result {
                 case .failure(let error):
                     completion(.failure(error))
@@ -147,7 +175,7 @@ class GoogleDriveService {
         )
     }
     
-    func updateFile(fileUrl: URL, fileID: String, completion: @escaping (Result<Bool, AppError>) -> Void) {
+    func updateFile(taskId: Int?, fileUrl: URL, fileID: String, completion: @escaping (Result<Bool, AppError>) -> Void) {
         let (data, boundary) = dataAndBoundaryForUploadFile(fileUrl: fileUrl)
         
         googleService.load(
@@ -165,6 +193,16 @@ class GoogleDriveService {
                 "Content-Length": "\(data.count)",
             ],
             completion: { result in
+                if let t = taskId {
+                    print("protocolCreateEditFileFolder start")
+                    MyAPIServic().protocolCreateEditFileFolder(
+                        taskId: t,
+                        fileName: fileUrl.lastPathComponent,
+                        createOrEdit: 1,
+                        folderOrFile: 1,
+                        completion: { _ in }
+                    )
+                }
                 switch result {
                 case .failure(let error):
                     completion(.failure(error))

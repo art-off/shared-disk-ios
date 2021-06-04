@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TasksView: View {
     
-    let goToFolder: (String, String) -> Void
+    let goToFolder: (String, String, Int?) -> Void
     
     @State var tasks: [TaskResponse]
     
@@ -20,14 +20,14 @@ struct TasksView: View {
                 Text(task.ready ? "Готов" : "Не готов")
                 if task.worker.id == UserStorage.id {
                     Button("Директория для работы") {
-                        goToFolder(task.folder_id, task.name)
+                        goToFolder(task.folder_id, task.name, task.id)
                     }
                     Button("Директория для заказчика") {
-                        goToFolder(task.customer_folder_id, task.name)
+                        goToFolder(task.customer_folder_id, task.name, task.id)
                     }
                 } else {
                     Button("Финальная директория") {
-                        goToFolder(task.finally_folder_id, task.name)
+                        goToFolder(task.finally_folder_id, task.name, task.id)
                     }
                 }
             }
@@ -39,18 +39,12 @@ struct TasksView: View {
             .background(Color.white)
             .cornerRadius(10)
             .border(Color.red)
-//            let id: Int
-//            let name: String
-//            let ready: Bool
-//            let customer_folder_id: String
-//            let finally_folder_id: String
-//            let worker: WorkerResopnse
         }
     }
 }
 
 struct TasksView_Previews: PreviewProvider {
     static var previews: some View {
-        TasksView(goToFolder: { _, _ in }, tasks: [])
+        TasksView(goToFolder: { _, _, _  in }, tasks: [])
     }
 }

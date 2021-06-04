@@ -147,4 +147,40 @@ class MyAPIServic {
             }
         )
     }
+    
+    func protocolCreateEditFileFolder(taskId: Int, fileName: String, createOrEdit: Int, folderOrFile: Int,
+                                      completion: @escaping (Result<[ProjectResponse], AppError>) -> Void) {
+        serverService.load(
+            StatusResponse.self,
+            method: .post,
+            path: "/create_or_edit_file_folder",
+            token: UserStorage.myToken,
+            json: .dict([
+                "task_id": taskId,
+                "file_name": fileName,
+                "create_or_edit": createOrEdit,
+                "folder_or_file": folderOrFile,
+            ]),
+            completion: { result in
+                print("PROTOCOL_CREATE", result)
+            }
+        )
+    }
+    
+    func protocolVisitFolder(taskId: Int, folderName: String,
+                             completion: @escaping (Result<[ProjectResponse], AppError>) -> Void) {
+        serverService.load(
+            StatusResponse.self,
+            method: .post,
+            path: "/visit_folder",
+            token: UserStorage.myToken,
+            json: .dict([
+                "task_id": taskId,
+                "folder_name": folderName,
+            ]),
+            completion: { result in
+                print("PROTOCOL_VISIT", result)
+            }
+        )
+    }
 }
