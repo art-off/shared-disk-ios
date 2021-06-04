@@ -14,35 +14,52 @@ struct ProjectsView: View {
     
     @State var projects: [ProjectResponse] = []
     
+    var projectsToShow: [ProjectResponse] {
+        if UserStorage.isManager {
+            return projects
+        } else {
+            return projects.filter { !$0.finish }
+        }
+    }
+    
     var body: some View {
         VStack {
-            List(projects) { project in
+            List(projectsToShow) { project in
                 VStack(alignment: .leading) {
                     Text(project.name)
                         .bold()
+                    if project.finish {
+                        Text("Закончен").bold()
+                    }
                     Text("Время начала: " + project.start_time)
                     Text("Дедлайн: " + project.deadline)
                     Text("Заказчик: " + project.customer.last_name)
                     Text("Менеджер: " + project.manager.name)
                 }
-                .onTapGesture {
-                    print(UserStorage.isManager)
-                    if UserStorage.isManager {
-                        goToFolder(project.folder_id, project.name, nil)
-                    } else {
-                        
-                        let tasks = project.stages.flatMap {
-                            $0.tasks
-                        }
-
-                        print(tasks)
-                        goToTask(tasks)
-                    }
-                }
                 .padding()
                 .background(Color.white)
                 .cornerRadius(10)
                 .border(Color.red)
+                .contextMenu {
+                    if UserStorage.isManager {
+                        Button("Закончить") {
+                            MyAPIServic().finishWorkOnProject(project_id: project.id, completion: { result in
+                                print(result)
+                            })
+                        }
+                        Button("Открыть папку проекта") {
+                            goToFolder(project.folder_id, project.name, nil)
+                        }
+                    }
+                    
+                    Button("Открыть задачи") {
+                        let tasks = project.stages.flatMap {
+                            $0.tasks
+                        }
+                        print(tasks)
+                        goToTask(tasks)
+                    }
+                }
             }
         }
         .onAppear {

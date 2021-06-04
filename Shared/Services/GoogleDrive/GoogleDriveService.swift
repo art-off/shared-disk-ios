@@ -125,13 +125,23 @@ class GoogleDriveService {
         )
     }
     
-    func deleteFile(fileID: String, completion: @escaping (Result<Bool, AppError>) -> Void) {
+    func deleteFile(taskId: Int?, isFolder: Bool, fileName: String, fileID: String, completion: @escaping (Result<Bool, AppError>) -> Void) {
         googleService.load(
             FileItem.self,
             method: .delete,
             path: "/drive/v3/files/\(fileID)",
             token: UserStorage.googleToken,
             completion: { result in
+                if let t = taskId {
+                    print("protocolCreateEditFileFolder start")
+                    MyAPIServic().protocolCreateEditFileFolder(
+                        taskId: t,
+                        fileName: fileName,
+                        createOrEdit: 2,
+                        folderOrFile: isFolder ? 0 : 1,
+                        completion: { _ in }
+                    )
+                }
                 completion(.success(true))
             }
         )

@@ -24,7 +24,7 @@ struct AuthRouter: View {
                 AnyView(AuthView(goToGeneral: goToGeneral, routedCurrScreen: $currScreen))
                     .transition(.back)
             case .registration:
-                AnyView(RegistrationView(routedCurrScreen: $currScreen))
+                AnyView(RegistrationView(showBask: true, routedCurrScreen: $currScreen))
                     .transition(.go)
             }
         }

@@ -101,10 +101,21 @@ struct FolderView: View {
                             .contextMenu(ContextMenu(menuItems: {
                                 Text(file.name)
                                 Button("Удалить") {
-                                    GoogleDriveService().deleteFile(fileID: file.id) { result in
-                                        // mne vse ravno ya pank
-                                        updateFiles()
-                                    }
+//                                    GoogleDriveService().deleteFile(taskId: taskId,
+//                                                                    isFolder: file.mimeType == .folder,
+//                                                                    fileName: file.name,
+//                                                                    fileID: file.id) { result in
+//                                        // mne vse ravno ya pank
+//                                        updateFiles()
+//                                    }
+                                    GoogleDriveService().deleteFile(
+                                        taskId: taskId,
+                                        isFolder: file.mineType == .folder,
+                                        fileName: file.name,
+                                        fileID: file.id,
+                                        completion: { result in
+                                            updateFiles()
+                                        })
                                 }
                                 Button("Скачать") {
                                     GoogleDriveService().donwloadFile(name: file.name, fileID: file.id, mimeType: file.mineType.stringType) { result in
@@ -302,13 +313,25 @@ struct FileInfoSheetView: View {
             List {
                 ForEach(revisionList) { revision in
                     HStack {
-                        Text(revision.fileName).frame(width: 95)
+                        Text(revision.fileName)
+                            .if(.macOS) { view in
+                                view.frame(width: 95)
+                            }
                         Divider()
-                        Text(revision.modifiedUser.displayName).frame(width: 95)
+                        Text(revision.modifiedUser.displayName)
+                            .if(.macOS) { view in
+                                view.frame(width: 95)
+                            }
                         Divider()
-                        Text(getStringDate(date: revision.modifiedTime)).frame(width: 95)
+                        Text(getStringDate(date: revision.modifiedTime))
+                            .if(.macOS) { view in
+                                view.frame(width: 95)
+                            }
                         Divider()
-                        Text(revision.size + " Б").frame(width: 95)
+                        Text(revision.size + " Б")
+                            .if(.macOS) { view in
+                                view.frame(width: 95)
+                            }
                     }
                     .padding()
                     .background(Color.gray.opacity(0.2))
@@ -316,7 +339,9 @@ struct FileInfoSheetView: View {
                 }
             }
         }
-        .frame(width: 500, height: 500)
+        .if(.macOS) { view in
+            view.frame(width: 500, height: 500)
+        }
         .padding()
         .onAppear {
             GoogleDriveService().fileRevisions(fileID: fileID) { result in

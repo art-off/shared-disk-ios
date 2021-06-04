@@ -9,7 +9,10 @@ import SwiftUI
 
 struct RegistrationView: View {
     
+    var showBask: Bool
     @Binding var routedCurrScreen: AuthRouter.Screen
+    
+    @State var selecredProfessionId: Int = 0
     
     @State var isLoading = false
     @State var isAlerting = false
@@ -23,15 +26,17 @@ struct RegistrationView: View {
         AlertingView(isShowing: $isAlerting, alertText: $alertText) {
             LoadingView(isShowing: $isLoading) {
                 VStack {
-                    HStack {
-                        Button("Back", action: {
-                            withAnimation {
-                                routedCurrScreen = .auth
-                            }
-                        })
-                        .padding()
-                        
-                        Spacer()
+                    if showBask {
+                        HStack {
+                            Button("Back", action: {
+                                withAnimation {
+                                    routedCurrScreen = .auth
+                                }
+                            })
+                            .padding()
+                            
+                            Spacer()
+                        }
                     }
                     Text("Shared disk")
                         .font(.largeTitle)
@@ -61,6 +66,13 @@ struct RegistrationView: View {
                     }
                     .padding()
                     
+                    Picker("Загазчик", selection: $selecredProfessionId) {
+                        Text("Дизайнер").tag(1)
+                        Text("Разработчик").tag(2)
+                        Text("Тестировщик").tag(3)
+                    }
+                    .padding()
+                    
                     Button(action: {
                         guard !login.isEmpty ||
                                 !password.isEmpty ||
@@ -69,19 +81,18 @@ struct RegistrationView: View {
                         
                         isLoading = true
                         
-                        MyAPIServic().registration(
-                            login: login,
+                        MyAPIServic().registrationWorker(
+                            name: login,
                             email: email,
                             password: password,
+                            professtionId: selecredProfessionId,
                             completion: { text in
-                                DispatchQueue.main.async {
-                                    self.login = ""
-                                    self.password = ""
-                                    self.email = ""
-                                    self.isLoading = false
-                                    self.alertText = text
-                                    self.isAlerting = true
-                                }
+                                self.login = ""
+                                self.password = ""
+                                self.email = ""
+                                self.isLoading = false
+                                self.alertText = text
+                                self.isAlerting = true
                             }
                         )
                     }) {
@@ -101,6 +112,6 @@ struct RegistrationView: View {
 
 struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistrationView(routedCurrScreen: .constant(.registration))
+        RegistrationView(showBask: true, routedCurrScreen: .constant(.registration))
     }
 }

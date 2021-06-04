@@ -100,6 +100,10 @@
 		7C81DEEC2668D2660018F3D6 /* ProjectsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEEA2668D1320018F3D6 /* ProjectsRouter.swift */; };
 		7C81DEEE2668DF150018F3D6 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEED2668DF150018F3D6 /* TasksView.swift */; };
 		7C81DEEF2668DF570018F3D6 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEED2668DF150018F3D6 /* TasksView.swift */; };
+		7C81DEF1266A4E490018F3D6 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEF0266A4E490018F3D6 /* MessagesView.swift */; };
+		7C81DEF2266A4E4E0018F3D6 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEF0266A4E490018F3D6 /* MessagesView.swift */; };
+		7C81DEF4266A57250018F3D6 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEF3266A57250018F3D6 /* MessageResponse.swift */; };
+		7C81DEF5266A58C20018F3D6 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81DEF3266A57250018F3D6 /* MessageResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -155,6 +159,8 @@
 		7C81DEE62668CE8E0018F3D6 /* ProjectsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsResponse.swift; sourceTree = "<group>"; };
 		7C81DEEA2668D1320018F3D6 /* ProjectsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsRouter.swift; sourceTree = "<group>"; };
 		7C81DEED2668DF150018F3D6 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
+		7C81DEF0266A4E490018F3D6 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
+		7C81DEF3266A57250018F3D6 /* MessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,6 +387,7 @@
 				7C81DE802663FC160018F3D6 /* FolderView.swift */,
 				7C81DEE92668D10E0018F3D6 /* ProjectsScreen */,
 				7C81DEC3266765340018F3D6 /* StartProjectView.swift */,
+				7C81DEF0266A4E490018F3D6 /* MessagesView.swift */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -411,6 +418,7 @@
 				7C81DEDC2668CC260018F3D6 /* Customer.swift */,
 				7C81DEDE2668CC6C0018F3D6 /* ProjectResponse.swift */,
 				7C81DEE62668CE8E0018F3D6 /* ProjectsResponse.swift */,
+				7C81DEF3266A57250018F3D6 /* MessageResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -523,6 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C753A17265B7FD600711DE7 /* MyAPIService.swift in Sources */,
+				7C81DEF4266A57250018F3D6 /* MessageResponse.swift in Sources */,
 				7C81DE852664A8120018F3D6 /* ProfileView.swift in Sources */,
 				7C753A13265B79A800711DE7 /* AnyTransition+go+back.swift in Sources */,
 				7C753A21265B8C6100711DE7 /* ActivityIndicator.swift in Sources */,
@@ -542,6 +551,7 @@
 				7C7539C32658FFB200711DE7 /* shared_diskApp.swift in Sources */,
 				7C2689412660ABE7000E68CA /* AppError.swift in Sources */,
 				7C81DEEE2668DF150018F3D6 /* TasksView.swift in Sources */,
+				7C81DEF1266A4E490018F3D6 /* MessagesView.swift in Sources */,
 				7C81DEE42668CDAD0018F3D6 /* ProjectsView.swift in Sources */,
 				7C81DEDF2668CC6C0018F3D6 /* ProjectResponse.swift in Sources */,
 				7C81DED72667A5E90018F3D6 /* DevelopmentStage.swift in Sources */,
@@ -578,6 +588,7 @@
 				7C81DECE26676BBE0018F3D6 /* Worker.swift in Sources */,
 				7C7539C42658FFB200711DE7 /* shared_diskApp.swift in Sources */,
 				7C26893C2660A3D2000E68CA /* MyAPIService.swift in Sources */,
+				7C81DEF5266A58C20018F3D6 /* MessageResponse.swift in Sources */,
 				7C753A11265B77E400711DE7 /* TextField.swift in Sources */,
 				7C81DECB26676B840018F3D6 /* DevelopmentTask.swift in Sources */,
 				7C81DE8F2664F1150018F3D6 /* TokenResponse.swift in Sources */,
@@ -592,6 +603,7 @@
 				7C753A04265B63F700711DE7 /* FileItem.swift in Sources */,
 				7C753A00265B63E800711DE7 /* UserStorage.swift in Sources */,
 				7C753A06265B63FC00711DE7 /* MimeType.swift in Sources */,
+				7C81DEF2266A4E4E0018F3D6 /* MessagesView.swift in Sources */,
 				7C81DEBE2666594D0018F3D6 /* FileRevision.swift in Sources */,
 				7C81DE892664EE640018F3D6 /* AuthUrlResponse.swift in Sources */,
 				7C753A01265B63EE00711DE7 /* URL+appendQueryItem.swift in Sources */,

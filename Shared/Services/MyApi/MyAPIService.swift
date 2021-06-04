@@ -183,4 +183,106 @@ class MyAPIServic {
             }
         )
     }
+    
+    func startWorkOnTask(taskId: Int, completion: @escaping (Result<Bool, AppError>) -> Void) {
+        serverService.load(
+            StatusResponse.self,
+            method: .post,
+            path: "/task/start",
+            token: UserStorage.myToken,
+            json: .dict([
+                "task_id": taskId,
+            ]),
+            completion: { result in
+                switch result {
+                case .failure(let e):
+                    completion(.failure(e))
+                case .success(_):
+                    completion(.success(true))
+                }
+            }
+        )
+    }
+    
+    func finishWorkOnTask(taskId: Int, message: String, completion: @escaping (Result<Bool, AppError>) -> Void) {
+        serverService.load(
+            StatusResponse.self,
+            method: .post,
+            path: "/task/finish",
+            token: UserStorage.myToken,
+            json: .dict([
+                "task_id": taskId,
+                "message": message,
+            ]),
+            completion: { result in
+                switch result {
+                case .failure(let e):
+                    completion(.failure(e))
+                case .success(_):
+                    completion(.success(true))
+                }
+            }
+        )
+    }
+    
+    func getMessages(completion: @escaping (Result<[MessageResponse], AppError>) -> Void) {
+        serverService.load(
+            MessagesResponse.self,
+            method: .post,
+            path: "/task/messages",
+            token: UserStorage.myToken,
+            completion: { result in
+                switch result {
+                case .failure(let e):
+                    completion(.failure(e))
+                case .success(let r):
+                    completion(.success(r.messages))
+                }
+            }
+        )
+    }
+    
+    func finishWorkOnProject(project_id: Int, completion: @escaping (Result<Bool, AppError>) -> Void) {
+        serverService.load(
+            StatusResponse.self,
+            method: .post,
+            path: "/project/finish",
+            token: UserStorage.myToken,
+            json: .dict([
+                "project_id": project_id,
+            ]),
+            completion: { result in
+                switch result {
+                case .failure(let e):
+                    completion(.failure(e))
+                case .success(_):
+                    completion(.success(true))
+                }
+            }
+        )
+    }
+    
+    func registrationWorker(name: String, email: String, password: String, professtionId: Int,
+                            completion: @escaping (String) -> Void) {
+        serverService.load(
+            StatusResponse.self,
+            method: .post,
+            path: "/registration/worker",
+            token: UserStorage.myToken,
+            json: .dict([
+                "name": name,
+                "email": email,
+                "password": password,
+                "profession_id": professtionId,
+            ]),
+            completion: { result in
+                switch result {
+                case .failure(let e):
+                    completion("Ошибка")
+                case .success(let s):
+                    completion("Создан")
+                }
+            }
+        )
+    }
 }

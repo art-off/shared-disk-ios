@@ -11,6 +11,7 @@ struct ProjectResponse: Identifiable, Decodable {
     
     let id: Int
     let name: String
+    let finish: Bool
     let folder_id: String
     let start_time: String
     let deadline: String
@@ -31,7 +32,8 @@ struct TaskResponse: Identifiable, Decodable {
     
     let id: Int
     let name: String
-    let ready: Bool
+    var ready: Bool
+    var current: Bool
     let folder_id: String
     let customer_folder_id: String
     let finally_folder_id: String
